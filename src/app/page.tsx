@@ -99,7 +99,7 @@ export default function Home() {
         <button
           onClick={account ? handleCheckIn : connectWallet}
           disabled={isLoading}
-          className={`w-full py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-[0_0_40px_-10px_rgba(234,179,8,0.5)] 
+          className={`w-full py-4 rounded-2xl font-bold text-lg transition-all duration-500 shadow-[0_0_40px_-10px_rgba(234,179,8,0.5)] 
             ${isLoading ? 'bg-neutral-800 text-neutral-400 scale-95' : 'bg-gradient-to-r from-yellow-500 to-amber-600 hover:to-amber-500 text-white hover:scale-[1.02] active:scale-[0.98]'}`}
         >
           {isLoading ? "Confirming..." : account ? "Check In Now" : "Connect to Check In"}
