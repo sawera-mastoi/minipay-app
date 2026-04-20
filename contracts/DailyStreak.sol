@@ -5,7 +5,7 @@ contract DailyStreak {
     // @title DailyStreak
     // @notice A contract for daily checkins
     // Mapping from user address to their streak count
-    mapping(address => uint256) public streaks;
+    mapping(address => uint256) public streaks; // user to streak count
     
     // Mapping from user address to their last check-in timestamp
     mapping(address => uint256) public lastCheckIn;
