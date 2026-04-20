@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "inputs": [],
+    "name": "checkIn",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "user", "type": "address"}],
+    "name": "streaks",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "user", "type": "address"}],
+    "name": "timeUntilNextCheckIn",
+    "outputs": [{"internalType": "uint256", "name": "remainingTime", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

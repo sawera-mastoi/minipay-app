@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { BrowserProvider, Contract } from "ethers";
+import { CONTRACT_ADDRESS } from "../utils/constants";
+import ABI from "../../contracts/ABI.json";
 
-// import { formatAddress } from '../utils';
 export default function Home() {
   const [isMiniPay, setIsMiniPay] = useState(false);
   const [account, setAccount] = useState<string | null>(null);
@@ -19,9 +21,15 @@ export default function Home() {
   const connectWallet = async () => {
     if (typeof window !== "undefined" && (window as any).ethereum) {
       try {
-        const accounts = await (window as any).ethereum.request({ method: "eth_requestAccounts" });
+        const provider = new BrowserProvider((window as any).ethereum);
+        const accounts = await provider.send("eth_requestAccounts", []);
         if (accounts.length > 0) {
           setAccount(accounts[0]);
+          
+          // Fetch initial streak
+          const contract = new Contract(CONTRACT_ADDRESS, ABI, provider);
+          const currentStreak = await contract.streaks(accounts[0]);
+          setStreak(Number(currentStreak));
         }
       } catch (error) {
         console.error("Connection failed", error);
@@ -35,14 +43,18 @@ export default function Home() {
     if (!account) return;
     setIsLoading(true);
     try {
-      // Stub for interacting with the DailyStreak.sol contract
-      // Since we don't have viem/ethers installed yet, this is a simulated click for the UI demo.
-      // In production, instantiate contract and call checkIn()
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const provider = new BrowserProvider((window as any).ethereum);
+      const signer = await provider.getSigner();
+      const contract = new Contract(CONTRACT_ADDRESS, ABI, signer);
+      
+      const tx = await contract.checkIn();
+      await tx.wait(); // wait for block confirmation
+      
       setStreak((prev) => prev + 1);
-      alert("Successfully checked in using MiniPay fee abstraction!");
-    } catch (error) {
+      alert("Successfully checked in! Transaction Confirmed!");
+    } catch (error: any) {
       console.error(error);
+      alert(error.reason || error.message || "Transaction failed or rejected.");
     } finally {
       setIsLoading(false);
     }
