@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+// import { formatAddress } from '../utils';
 export default function Home() {
   const [isMiniPay, setIsMiniPay] = useState(false);
   const [account, setAccount] = useState<string | null>(null);
