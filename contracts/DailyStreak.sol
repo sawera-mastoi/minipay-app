@@ -2,6 +2,7 @@
 pragma solidity ^0.8.19;
 
 contract DailyStreak {
+    // Version: 1.0.0
     // @title DailyStreak
     // @notice A contract for daily checkins
     // Mapping from user address to their streak count
