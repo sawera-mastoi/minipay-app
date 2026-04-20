@@ -46,3 +46,7 @@ Integrates MiniPay provider for seamless gas-fee abstracted transactions.
 
 ## Smart Contract
 The DailyStreak contract manages the logic for users to maintain a daily check-in sequence.
+
+
+## Deployment
+Network: Celo Alfajores Testnet / Mainnet
