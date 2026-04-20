@@ -42,3 +42,7 @@ Built with Next.js, Tailwind CSS, and Solidity.
 
 ## MiniPay Integration
 Integrates MiniPay provider for seamless gas-fee abstracted transactions.
+
+
+## Smart Contract
+The DailyStreak contract manages the logic for users to maintain a daily check-in sequence.
