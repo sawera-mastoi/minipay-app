@@ -24,7 +24,7 @@ contract DailyStreak {
         uint256 userLastCheckIn = lastCheckIn[msg.sender];
         
         // Ensure user hasn't checked in within the last 24 hours
-        require(block.timestamp >= userLastCheckIn + ONE_DAY, "You can only check in once every 24 hours.");
+        require(block.timestamp >= userLastCheckIn + ONE_DAY, "Daily check-in cooldown active");
 
         // If the user checked in between 24 and 48 hours, increment streak
         // If they missed a day (>48 hours), reset streak to 1
