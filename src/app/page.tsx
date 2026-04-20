@@ -9,7 +9,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // MiniPay injection check
+    // Check if injected provider is MiniPay wallet environment
     if (typeof window !== "undefined" && (window as any).ethereum?.isMiniPay) {
       setIsMiniPay(true);
     }
