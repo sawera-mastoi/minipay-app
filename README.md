@@ -92,3 +92,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- feat: add toast notification for wallet connection -->
 <!-- docs: final review and polish of project documentation -->
 <!-- chore: clean up unused dependencies and files -->
+<!-- feat: final commit for Celo Monthly Talent event submission -->
