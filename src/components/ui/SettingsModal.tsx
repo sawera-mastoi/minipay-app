@@ -1,3 +1,6 @@
+/**
+ * SettingsModal.tsx UI component.
+ */
 import React from 'react';
 import { Card, CardHeader, CardBody } from './Card';
 import { X } from 'lucide-react';
