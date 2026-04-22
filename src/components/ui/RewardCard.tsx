@@ -1,3 +1,6 @@
+/**
+ * RewardCard.tsx UI component.
+ */
 import React from 'react';
 import { Card, CardBody } from './Card';
 import { Gift } from 'lucide-react';
