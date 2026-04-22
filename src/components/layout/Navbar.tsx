@@ -1,3 +1,6 @@
+/**
+ * Navbar.tsx component for layout structure.
+ */
 import { formatAddress } from '../../utils/format';
 import React from 'react';
 import { Container } from './Container';
