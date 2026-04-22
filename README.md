@@ -73,3 +73,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- docs: add section on gas abstraction to README -->
 <!-- chore: update project version in package.json -->
 <!-- refactor: extract common types to dedicated file -->
+<!-- feat: add social sharing meta tags to layout -->
