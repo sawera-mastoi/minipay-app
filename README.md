@@ -65,3 +65,4 @@ Network: Celo Alfajores Testnet / Mainnet
 - **Blockchain**: Celo Mainnet
 <!-- refactor: optimize rendering performance in Leaderboard -->
 <!-- style: adjust typography for better readability on mobile -->
+<!-- docs: clarify smart contract interaction in README -->
