@@ -1,3 +1,6 @@
+/**
+ * Leaderboard.tsx component for streak-related features.
+ */
 import React from 'react';
 import { Card, CardHeader, CardBody } from '../ui/Card';
 import { Trophy } from 'lucide-react';
