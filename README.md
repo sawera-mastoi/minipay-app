@@ -71,3 +71,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- fix: handle edge case in wallet connection logic -->
 <!-- style: refine glassmorphism effects on hero section -->
 <!-- docs: add section on gas abstraction to README -->
+<!-- chore: update project version in package.json -->
