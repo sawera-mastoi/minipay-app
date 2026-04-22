@@ -1,3 +1,6 @@
+/**
+ * CheckInButton.tsx component for streak-related features.
+ */
 import React from 'react';
 import { Button } from '../ui';
 
