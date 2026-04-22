@@ -4,3 +4,5 @@ export * from './FAQSection';
 export * from './SocialLinks';
 export * from './Newsletter';
 export * from './NewsSection';
+export * from './Navbar';
+export * from './Footer';

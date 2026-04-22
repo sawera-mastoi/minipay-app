@@ -11,7 +11,7 @@ export const Footer = () => {
       <Container className='flex flex-col items-center gap-6'>
         <SocialLinks />
         <div className='text-neutral-500 text-sm'>
-          © 2026 MiniPay Streak. Built for Celo Proof of Ship.
+          &copy; 2026 MiniPay Streak. Built for Celo Proof of Ship.
         </div>
       </Container>
     </footer>
