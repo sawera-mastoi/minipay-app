@@ -76,3 +76,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- feat: add social sharing meta tags to layout -->
 <!-- style: improve contrast for accessibility compliance -->
 <!-- docs: add troubleshooting guide to README -->
+<!-- chore: add editorconfig for consistent coding style -->
