@@ -87,3 +87,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- feat: add support for additional Celo testnets -->
 <!-- docs: add licensing information to all source files -->
 <!-- chore: optimize build script for faster deployments -->
+<!-- refactor: move constants to a centralized location -->
