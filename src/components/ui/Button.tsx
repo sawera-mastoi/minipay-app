@@ -1,5 +1,6 @@
 import React from 'react';
 import { Loader2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
@@ -19,10 +20,10 @@ export const Button: React.FC<ButtonProps> = ({
   className = '', 
   ...props 
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-xl font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 disabled:opacity-50 disabled:pointer-events-none gap-2';
+  const baseStyles = 'inline-flex items-center justify-center rounded-xl font-bold transition-all focus:outline-none focus:ring-2 focus:ring-yellow-500/50 disabled:opacity-50 disabled:pointer-events-none gap-2';
   
   const variants = {
-    primary: 'bg-gradient-to-r from-yellow-500 to-amber-600 text-white hover:shadow-[0_0_20px_-5px_rgba(234,179,8,0.4)] hover:scale-[1.02] active:scale-[0.98]',
+    primary: 'bg-gradient-to-r from-yellow-500 to-amber-600 text-white shadow-[0_0_20px_-5px_rgba(234,179,8,0.4)]',
     secondary: 'bg-white/10 backdrop-blur-md text-white hover:bg-white/20',
     outline: 'border border-white/20 text-white hover:bg-white/10',
     ghost: 'text-neutral-400 hover:text-white hover:bg-white/5',
@@ -35,7 +36,9 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <button 
+    <motion.button 
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className={\ \ \ \} 
       disabled={isLoading || props.disabled}
       {...props}
@@ -44,6 +47,6 @@ export const Button: React.FC<ButtonProps> = ({
       {!isLoading && leftIcon}
       {children}
       {!isLoading && rightIcon}
-    </button>
+    </motion.button>
   );
 };
