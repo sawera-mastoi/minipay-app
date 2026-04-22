@@ -18,3 +18,15 @@ export const Card = ({ children, className = '', variant = 'default' }: CardProp
     </div>
   );
 };
+
+export const CardHeader = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
+  <div className={p-6 border-b border-white/5 \}>{children}</div>
+);
+
+export const CardBody = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
+  <div className={p-6 \}>{children}</div>
+);
+
+export const CardFooter = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
+  <div className={p-6 border-t border-white/5 bg-white/[0.02] \}>{children}</div>
+);
