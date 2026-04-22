@@ -78,3 +78,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- docs: add troubleshooting guide to README -->
 <!-- chore: add editorconfig for consistent coding style -->
 <!-- refactor: simplify useWeb3 hook implementation -->
+<!-- style: adjust spacing between dashboard cards -->
