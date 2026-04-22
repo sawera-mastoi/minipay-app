@@ -5,7 +5,7 @@ import { formatAddress } from '../../utils/format';
 import React from 'react';
 import { Container } from './Container';
 import { Zap, Wallet, Bell } from 'lucide-react';
-import { NotificationCenter } from '../ui';
+import { NotificationCenter, ThemeToggle } from '../ui';
 import { Button } from '../ui/Button';
 
 export const Navbar = ({ account }: { account?: string | null }) => {
@@ -20,6 +20,7 @@ export const Navbar = ({ account }: { account?: string | null }) => {
         </div>
         {account ? (
           <div className='flex items-center gap-4'>
+            <ThemeToggle />
             <NotificationCenter />
            <div className='px-4 py-2 border border-white/10 rounded-full bg-white/5 backdrop-blur-md text-sm font-medium'>
             {formatAddress(account)}
