@@ -56,3 +56,10 @@ Network: Celo Alfajores Testnet / Mainnet
 - **MiniPay Integration**: Seamless experience for MiniPay users.
 - **Zero Gas Fees**: Leveraging Celo's gas fee abstraction.
 - **Premium UI**: Modern design with glassmorphism and animations.
+
+## Tech Stack
+- **Frontend**: Next.js 15, React 19, Tailwind CSS 4
+- **Web3**: Ethers.js v6
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Blockchain**: Celo Mainnet
