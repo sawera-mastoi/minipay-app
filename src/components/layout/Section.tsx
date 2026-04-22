@@ -1,3 +1,6 @@
+/**
+ * Section.tsx component for layout structure.
+ */
 import React from 'react';
 
 export const Section = ({ children, className = '', id }: { children: React.ReactNode, className?: string, id?: string }) => (
