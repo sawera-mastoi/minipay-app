@@ -11,3 +11,4 @@ export * from './ErrorDisplay';
 export * from './SettingsModal';
 export * from './Toggle';
 export * from './RewardCard';
+export * from './FAQItem';
