@@ -4,7 +4,8 @@
 import { formatAddress } from '../../utils/format';
 import React from 'react';
 import { Container } from './Container';
-import { Zap, Wallet } from 'lucide-react';
+import { Zap, Wallet, Bell } from 'lucide-react';
+import { NotificationCenter } from '../ui';
 import { Button } from '../ui/Button';
 
 export const Navbar = ({ account }: { account?: string | null }) => {
@@ -18,9 +19,12 @@ export const Navbar = ({ account }: { account?: string | null }) => {
           </div>
         </div>
         {account ? (
+          <div className='flex items-center gap-4'>
+            <NotificationCenter />
            <div className='px-4 py-2 border border-white/10 rounded-full bg-white/5 backdrop-blur-md text-sm font-medium'>
             {formatAddress(account)}
           </div>
+        </div>
         ) : (
           <Button variant='secondary' size='sm' leftIcon={<Wallet className='w-4 h-4' />}>
             Connect
