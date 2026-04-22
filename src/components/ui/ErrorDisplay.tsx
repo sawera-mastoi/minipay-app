@@ -1,3 +1,6 @@
+/**
+ * ErrorDisplay.tsx UI component.
+ */
 import React from 'react';
 import { AlertCircle } from 'lucide-react';
 
