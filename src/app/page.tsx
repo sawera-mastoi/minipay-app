@@ -106,6 +106,8 @@ export default function Home() {
       await tx.wait(); // wait for block confirmation
       
       setStreak((prev) => prev + 1);
+      fireConfetti();
+      showToast('Successfully checked in!');
       alert("Successfully checked in! Transaction Confirmed on Celo!");
     } catch (error: any) {
       console.error(error);
