@@ -34,3 +34,17 @@ body {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
   }
 }
+
+@layer base {
+  :root {
+    --brand-yellow: #eab308;
+    --brand-amber: #d97706;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-text {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+}
