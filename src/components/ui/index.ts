@@ -12,3 +12,5 @@ export * from './SettingsModal';
 export * from './Toggle';
 export * from './RewardCard';
 export * from './FAQItem';
+export * from './NotificationItem';
+export * from './NotificationCenter';
