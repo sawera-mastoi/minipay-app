@@ -1,9 +1,12 @@
 import React from 'react';
+import { Loader2 } from 'lucide-react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
 }
 
 export const Button: React.FC<ButtonProps> = ({ 
@@ -11,10 +14,12 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'primary', 
   size = 'md', 
   isLoading, 
+  leftIcon,
+  rightIcon,
   className = '', 
   ...props 
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-xl font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 disabled:opacity-50 disabled:pointer-events-none';
+  const baseStyles = 'inline-flex items-center justify-center rounded-xl font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 disabled:opacity-50 disabled:pointer-events-none gap-2';
   
   const variants = {
     primary: 'bg-gradient-to-r from-yellow-500 to-amber-600 text-white hover:shadow-[0_0_20px_-5px_rgba(234,179,8,0.4)] hover:scale-[1.02] active:scale-[0.98]',
@@ -35,7 +40,10 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={isLoading || props.disabled}
       {...props}
     >
-      {isLoading ? '...' : children}
+      {isLoading && <Loader2 className='w-4 h-4 animate-spin' />}
+      {!isLoading && leftIcon}
+      {children}
+      {!isLoading && rightIcon}
     </button>
   );
 };
