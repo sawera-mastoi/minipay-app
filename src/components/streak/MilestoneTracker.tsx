@@ -1,3 +1,6 @@
+/**
+ * MilestoneTracker.tsx component for streak-related features.
+ */
 import React from 'react';
 
 const milestones = [7, 14, 30, 90];
