@@ -67,3 +67,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- style: adjust typography for better readability on mobile -->
 <!-- docs: clarify smart contract interaction in README -->
 <!-- chore: update linting rules for stricter type checking -->
+<!-- feat: add pulse animation to active check-in button -->
