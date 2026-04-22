@@ -80,3 +80,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- refactor: simplify useWeb3 hook implementation -->
 <!-- style: adjust spacing between dashboard cards -->
 <!-- feat: add loading state to recent activity feed -->
+<!-- docs: update contributors section in README -->
