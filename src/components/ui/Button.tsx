@@ -36,7 +36,7 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <motion.button 
+    <motion.button aria-label={props['aria-label'] || (typeof children === 'string' ? children : 'button')} 
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={\ \ \ \} 
