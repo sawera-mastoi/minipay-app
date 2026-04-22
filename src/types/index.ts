@@ -15,3 +15,6 @@ export interface LeaderboardEntry {
   address: string;
   streak: number;
 }
+
+export type ComponentVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
+export type ComponentSize = 'sm' | 'md' | 'lg';
