@@ -50,3 +50,9 @@ The DailyStreak contract manages the logic for users to maintain a daily check-i
 
 ## Deployment
 Network: Celo Alfajores Testnet / Mainnet
+
+## Features
+- **Daily Streak Tracking**: Build and maintain your streak on the Celo blockchain.
+- **MiniPay Integration**: Seamless experience for MiniPay users.
+- **Zero Gas Fees**: Leveraging Celo's gas fee abstraction.
+- **Premium UI**: Modern design with glassmorphism and animations.
