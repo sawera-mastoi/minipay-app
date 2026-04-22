@@ -3,3 +3,5 @@ export * from './CheckInButton';
 export * from './StreakHistory';
 export * from './Leaderboard';
 export * from './MilestoneTracker';
+export * from './TransactionItem';
+export * from './TransactionList';
