@@ -83,3 +83,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- docs: update contributors section in README -->
 <!-- chore: add .prettierrc for code formatting -->
 <!-- refactor: rename variables for better code clarity -->
+<!-- style: enhance hover states on navigation links -->
