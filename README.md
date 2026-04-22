@@ -85,3 +85,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- refactor: rename variables for better code clarity -->
 <!-- style: enhance hover states on navigation links -->
 <!-- feat: add support for additional Celo testnets -->
+<!-- docs: add licensing information to all source files -->
