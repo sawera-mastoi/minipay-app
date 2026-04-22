@@ -10,3 +10,4 @@ export * from './Skeleton';
 export * from './ErrorDisplay';
 export * from './SettingsModal';
 export * from './Toggle';
+export * from './RewardCard';
