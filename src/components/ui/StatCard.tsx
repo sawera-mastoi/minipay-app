@@ -1,3 +1,6 @@
+/**
+ * StatCard.tsx UI component.
+ */
 import React from 'react';
 import { Card } from './Card';
 
