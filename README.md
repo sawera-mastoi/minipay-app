@@ -63,3 +63,4 @@ Network: Celo Alfajores Testnet / Mainnet
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
 - **Blockchain**: Celo Mainnet
+<!-- refactor: optimize rendering performance in Leaderboard -->
