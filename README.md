@@ -89,3 +89,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- chore: optimize build script for faster deployments -->
 <!-- refactor: move constants to a centralized location -->
 <!-- style: adjust gradient intensity on main background -->
+<!-- feat: add toast notification for wallet connection -->
