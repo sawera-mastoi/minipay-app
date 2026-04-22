@@ -1,3 +1,6 @@
+/**
+ * Toggle.tsx UI component.
+ */
 import React from 'react';
 
 export const Toggle = ({ enabled, onChange }: { enabled: boolean, onChange: (val: boolean) => void }) => (
