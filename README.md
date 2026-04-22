@@ -79,3 +79,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- chore: add editorconfig for consistent coding style -->
 <!-- refactor: simplify useWeb3 hook implementation -->
 <!-- style: adjust spacing between dashboard cards -->
+<!-- feat: add loading state to recent activity feed -->
