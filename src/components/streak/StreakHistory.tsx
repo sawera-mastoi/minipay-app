@@ -1,3 +1,6 @@
+/**
+ * StreakHistory.tsx component for streak-related features.
+ */
 import React from 'react';
 import { Card, CardHeader, CardBody } from '../ui/Card';
 import { CheckCircle2 } from 'lucide-react';
