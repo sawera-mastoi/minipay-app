@@ -82,3 +82,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- feat: add loading state to recent activity feed -->
 <!-- docs: update contributors section in README -->
 <!-- chore: add .prettierrc for code formatting -->
+<!-- refactor: rename variables for better code clarity -->
