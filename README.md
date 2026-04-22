@@ -68,3 +68,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- docs: clarify smart contract interaction in README -->
 <!-- chore: update linting rules for stricter type checking -->
 <!-- feat: add pulse animation to active check-in button -->
+<!-- fix: handle edge case in wallet connection logic -->
