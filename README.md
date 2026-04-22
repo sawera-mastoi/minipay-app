@@ -90,3 +90,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- refactor: move constants to a centralized location -->
 <!-- style: adjust gradient intensity on main background -->
 <!-- feat: add toast notification for wallet connection -->
+<!-- docs: final review and polish of project documentation -->
