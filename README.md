@@ -88,3 +88,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- docs: add licensing information to all source files -->
 <!-- chore: optimize build script for faster deployments -->
 <!-- refactor: move constants to a centralized location -->
+<!-- style: adjust gradient intensity on main background -->
