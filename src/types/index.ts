@@ -9,3 +9,9 @@ export interface WalletState {
   chainId: string | null;
   isConnected: boolean;
 }
+
+export interface LeaderboardEntry {
+  rank: number;
+  address: string;
+  streak: number;
+}
