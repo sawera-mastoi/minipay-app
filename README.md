@@ -84,3 +84,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- chore: add .prettierrc for code formatting -->
 <!-- refactor: rename variables for better code clarity -->
 <!-- style: enhance hover states on navigation links -->
+<!-- feat: add support for additional Celo testnets -->
