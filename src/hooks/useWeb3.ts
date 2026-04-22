@@ -1,3 +1,6 @@
+/**
+ * Custom hook for Web3 wallet interactions on Celo
+ */
 import { useState, useEffect } from 'react';
 import { BrowserProvider } from 'ethers';
 
