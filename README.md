@@ -66,3 +66,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- refactor: optimize rendering performance in Leaderboard -->
 <!-- style: adjust typography for better readability on mobile -->
 <!-- docs: clarify smart contract interaction in README -->
+<!-- chore: update linting rules for stricter type checking -->
