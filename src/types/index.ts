@@ -3,3 +3,9 @@ export interface UserStats {
   lastCheckIn: number;
   totalCheckIns: number;
 }
+
+export interface WalletState {
+  address: string | null;
+  chainId: string | null;
+  isConnected: boolean;
+}
