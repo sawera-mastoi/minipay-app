@@ -77,3 +77,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- style: improve contrast for accessibility compliance -->
 <!-- docs: add troubleshooting guide to README -->
 <!-- chore: add editorconfig for consistent coding style -->
+<!-- refactor: simplify useWeb3 hook implementation -->
