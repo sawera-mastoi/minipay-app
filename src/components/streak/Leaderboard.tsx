@@ -21,7 +21,7 @@ export const Leaderboard = () => (
       {rankings.map((user) => (
         <div key={user.rank} className='flex items-center justify-between p-4 border-b border-white/5 last:border-0'>
           <div className='flex items-center gap-4'>
-            <span className={w-6 text-center font-bold \}>
+            <span className={`w-6 text-center font-bold ${user.rank === 1 ? 'text-yellow-500' : 'text-neutral-500'}`}>
               {user.rank}
             </span>
             <span className='text-sm text-neutral-300'>{user.address}</span>

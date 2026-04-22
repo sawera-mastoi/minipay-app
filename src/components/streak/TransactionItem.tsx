@@ -8,7 +8,7 @@ export const TransactionItem = ({ hash, timestamp, status }: { hash: string, tim
       <span className='text-xs font-mono text-neutral-500'>{formatAddress(hash)}</span>
       <span className='text-[10px] text-neutral-600'>{new Date(timestamp).toLocaleDateString()}</span>
     </div>
-    <div className={\lex items-center gap-1.5 text-xs font-bold \\}>
+    <div className={`flex items-center gap-1.5 text-xs font-bold ${status === 'confirmed' ? 'text-green-500' : status === 'pending' ? 'text-yellow-500' : 'text-red-500'}`}>
       {status === 'confirmed' ? <CheckCircle2 className='w-4 h-4' /> : status === 'pending' ? <Clock className='w-4 h-4 animate-pulse' /> : <XCircle className='w-4 h-4' />}
       {status.toUpperCase()}
     </div>

@@ -39,10 +39,11 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <motion.button aria-label={props['aria-label'] || (typeof children === 'string' ? children : 'button')} 
+    <motion.button 
+      aria-label={props['aria-label'] || (typeof children === 'string' ? children : 'button')}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className={\ \ \ \} 
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`} 
       disabled={isLoading || props.disabled}
       {...props}
     >
@@ -53,48 +54,3 @@ export const Button: React.FC<ButtonProps> = ({
     </motion.button>
   );
 };
- // logic update 206
- // logic update 207
- // logic update 208
- // logic update 209
- // logic update 210
- // logic update 211
- // logic update 212
- // logic update 213
- // logic update 214
- // logic update 215
- // logic update 216
- // logic update 217
- // logic update 218
- // logic update 219
- // logic update 220
- // logic update 221
- // logic update 222
- // logic update 223
- // logic update 224
- // logic update 225
- // logic update 226
- // logic update 227
- // logic update 228
- // logic update 229
- // logic update 230
- // logic update 231
- // logic update 232
- // logic update 233
- // logic update 234
- // logic update 235
- // logic update 236
- // logic update 237
- // logic update 238
- // logic update 239
- // logic update 240
- // logic update 241
- // logic update 242
- // logic update 243
- // logic update 244
- // logic update 245
- // logic update 246
- // logic update 247
- // logic update 248
- // logic update 249
- // logic update 250

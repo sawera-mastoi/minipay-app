@@ -28,8 +28,8 @@ export const Badge = ({ children, variant = 'neutral', className = '', dot }: Ba
   };
 
   return (
-    <span className={inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-bold rounded-full \ \}>
-      {dot && <span className={w-1.5 h-1.5 rounded-full \ animate-pulse} />}
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-bold rounded-full ${variants[variant]} ${className}`}>
+      {dot && <span className={`w-1.5 h-1.5 rounded-full ${dotColors[variant]} animate-pulse`} />}
       {children}
     </span>
   );
