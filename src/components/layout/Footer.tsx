@@ -1,3 +1,6 @@
+/**
+ * Footer.tsx component for layout structure.
+ */
 import React from 'react';
 import { Container } from './Container';
 import { Github, Twitter } from 'lucide-react';
