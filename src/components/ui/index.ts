@@ -7,3 +7,4 @@ export * from './FadeIn';
 export * from './StatCard';
 export * from './LoadingSpinner';
 export * from './Skeleton';
+export * from './ErrorDisplay';
