@@ -1,3 +1,6 @@
+/**
+ * StreakCounter.tsx component for streak-related features.
+ */
 import React from 'react';
 
 export const StreakCounter = ({ count }: { count: number }) => {
