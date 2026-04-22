@@ -69,3 +69,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- chore: update linting rules for stricter type checking -->
 <!-- feat: add pulse animation to active check-in button -->
 <!-- fix: handle edge case in wallet connection logic -->
+<!-- style: refine glassmorphism effects on hero section -->
