@@ -1,3 +1,6 @@
+/**
+ * A versatile, animated button component supporting various themes and states.
+ */
 import React from 'react';
 import { Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
