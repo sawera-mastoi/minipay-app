@@ -1,3 +1,6 @@
+/**
+ * Badge component for displaying status or labels.
+ */
 import React from 'react';
 
 interface BadgeProps {
