@@ -16,3 +16,4 @@ export * from './NotificationItem';
 export * from './NotificationCenter';
 export * from './ThemeToggle';
 export * from './ShareButton';
+export * from './Tooltip';
