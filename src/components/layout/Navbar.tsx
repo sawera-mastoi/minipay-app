@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container } from './Container';
-import { Zap } from 'lucide-react';
+import { Zap, Wallet } from 'lucide-react';
+import { Button } from '../ui/Button';
 
-export const Navbar = () => {
+export const Navbar = ({ account }: { account?: string | null }) => {
   return (
     <nav className='fixed top-0 w-full z-50 border-b border-white/5 bg-neutral-950/50 backdrop-blur-xl'>
       <Container className='flex justify-between h-20 items-center'>
@@ -12,6 +13,15 @@ export const Navbar = () => {
             MiniPay Streak
           </div>
         </div>
+        {account ? (
+           <div className='px-4 py-2 border border-white/10 rounded-full bg-white/5 backdrop-blur-md text-sm font-medium'>
+            {account.slice(0, 6)}...{account.slice(-4)}
+          </div>
+        ) : (
+          <Button variant='secondary' size='sm' leftIcon={<Wallet className='w-4 h-4' />}>
+            Connect
+          </Button>
+        )}
       </Container>
     </nav>
   );
