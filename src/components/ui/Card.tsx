@@ -17,7 +17,7 @@ export const Card = ({ children, className = '', variant = 'default' }: CardProp
 
   return (
     <div className={
-ounded-3xl overflow-hidden transition-all duration-500 \ \}>
+ounded-3xl overflow-hidden transition-all duration-500 hover:shadow-yellow-500/5 \ \}>
       {children}
     </div>
   );
