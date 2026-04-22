@@ -18,3 +18,10 @@ export interface LeaderboardEntry {
 
 export type ComponentVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
 export type ComponentSize = 'sm' | 'md' | 'lg';
+
+export interface TransactionHistory {
+  hash: string;
+  timestamp: number;
+  type: 'check-in' | 'reward';
+  status: 'pending' | 'confirmed' | 'failed';
+}
