@@ -1,3 +1,4 @@
+import { ShareButton } from '../ui/ShareButton';
 /**
  * StreakCounter.tsx component for streak-related features.
  */
@@ -12,6 +13,7 @@ export const StreakCounter = ({ count }: { count: number }) => {
       <div className='text-sm font-medium text-neutral-500 uppercase tracking-widest mt-2'>
         Day Streak
       </div>
+      <div className='mt-4'><ShareButton text={\I\\'ve built a \ day streak on MiniPay! Join me on Celo.\} /></div>
     </div>
   );
 };
