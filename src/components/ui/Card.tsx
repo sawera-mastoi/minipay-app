@@ -1,3 +1,6 @@
+/**
+ * Card container for grouping related information with glassmorphism support.
+ */
 import React from 'react';
 
 interface CardProps {
@@ -13,7 +16,8 @@ export const Card = ({ children, className = '', variant = 'default' }: CardProp
   };
 
   return (
-    <div className={ounded-3xl overflow-hidden transition-all duration-500 \ \}>
+    <div className={
+ounded-3xl overflow-hidden transition-all duration-500 \ \}>
       {children}
     </div>
   );
