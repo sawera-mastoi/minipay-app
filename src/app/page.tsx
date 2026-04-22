@@ -5,6 +5,16 @@ import { BrowserProvider, Contract } from "ethers";
 import { CONTRACT_ADDRESS } from "../utils/constants";
 import ABI from "../../contracts/ABI.json";
 
+// Import modular components
+import { Navbar, Footer, Section, Container, FAQSection, Newsletter } from '../components/layout';
+import { Card, Glow, FadeIn, Badge } from '../components/ui';
+import { StreakCounter, CheckInButton, StreakHistory, Leaderboard } from '../components/streak';
+
+// Import custom hooks
+import { useWeb3 } from '../hooks/useWeb3';
+import { useToast } from '../hooks/useToast';
+import { useConfetti } from '../hooks/useConfetti';
+
 const CELO_PARAMS = {
   chainId: "0xa4ec", // 42220
   chainName: "Celo Mainnet",
@@ -21,8 +31,11 @@ export default function Home() {
   const [activeProvider, setActiveProvider] = useState<any>(null);
   const [showWallets, setShowWallets] = useState(false);
 
+  // Modular hooks
+  const { showToast } = useToast();
+  const { fire: fireConfetti } = useConfetti();
+
   useEffect(() => {
-    // Check if injected provider is MiniPay wallet environment
     if (typeof window !== "undefined" && (window as any).ethereum?.isMiniPay) {
       setIsMiniPay(true);
     }
@@ -35,7 +48,6 @@ export default function Home() {
         params: [{ chainId: CELO_PARAMS.chainId }],
       });
     } catch (switchError: any) {
-      // 4902 error code means the chain hasn't been added to the wallet yet
       if (switchError.code === 4902) {
         try {
           await provider.request({
@@ -65,29 +77,27 @@ export default function Home() {
     }
 
     if (!targetProvider) {
-      alert(`${walletType} Wallet extension is not installed or detected!`);
+      showToast(`${walletType} Wallet extension not detected!`, 'error');
       return;
     }
 
     try {
-      // Request accounts first
       const accounts = await targetProvider.request({ method: "eth_requestAccounts" });
       if (accounts.length > 0) {
-        // Force switch to Celo BEFORE creating the ethers provider instance
         await switchToCelo(targetProvider);
-        
         setActiveProvider(targetProvider);
         setAccount(accounts[0]);
         
-        // Fetch initial streak using the connected provider
         const ethersProvider = new BrowserProvider(targetProvider);
         const contract = new Contract(CONTRACT_ADDRESS, ABI, ethersProvider);
         const currentStreak = await contract.streaks(accounts[0]);
         setStreak(Number(currentStreak));
         setShowWallets(false);
+        showToast('Wallet connected successfully!');
       }
     } catch (error) {
       console.error("Connection failed", error);
+      showToast('Failed to connect wallet', 'error');
     }
   };
 
@@ -95,7 +105,6 @@ export default function Home() {
     if (!account || !activeProvider) return;
     setIsLoading(true);
     try {
-      // Ensure we are STILL on Celo before transmitting to avoid wrong-chain errors
       await switchToCelo(activeProvider);
       
       const ethersProvider = new BrowserProvider(activeProvider);
@@ -103,91 +112,83 @@ export default function Home() {
       const contract = new Contract(CONTRACT_ADDRESS, ABI, signer);
       
       const tx = await contract.checkIn();
-      await tx.wait(); // wait for block confirmation
+      await tx.wait();
       
       setStreak((prev) => prev + 1);
       fireConfetti();
       showToast('Successfully checked in!');
-      alert("Successfully checked in! Transaction Confirmed on Celo!");
     } catch (error: any) {
       console.error(error);
-      alert(error.reason || error.message || "Transaction failed or rejected.");
+      showToast(error.reason || error.message || "Transaction failed", 'error');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-white flex flex-col items-center justify-center p-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-yellow-900/40 via-neutral-950 to-neutral-950">
+    <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-yellow-500/30">
+      <Navbar account={account} />
       
-      <nav className="absolute top-0 w-full flex justify-between p-6 items-center">
-        <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-600">
-          MiniPay Streak
-        </h1>
-        {account ? (
-          <div className="px-4 py-2 border border-white/10 rounded-full bg-white/5 backdrop-blur-md text-sm font-medium">
-            {account.slice(0, 6)}...{account.slice(-4)}
-          </div>
-        ) : (
-          <div className="relative">
-            <button 
-              onClick={() => setShowWallets(!showWallets)}
-              className="px-6 py-2 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition-colors"
-            >
-              Connect Wallet
-            </button>
-            {showWallets && (
-              <div className="absolute right-0 mt-2 w-48 bg-neutral-900 border border-white/10 rounded-xl shadow-2xl overflow-hidden flex flex-col z-50">
-                <button onClick={() => connectSpecificWallet('OKX')} className="px-4 py-3 text-left text-sm hover:bg-white/10 border-b border-white/5">OKX Wallet</button>
-                <button onClick={() => connectSpecificWallet('BITGET')} className="px-4 py-3 text-left text-sm hover:bg-white/10 border-b border-white/5">Bitget Wallet</button>
-                <button onClick={() => connectSpecificWallet('METAMASK')} className="px-4 py-3 text-left text-sm hover:bg-white/10">MetaMask / MiniPay</button>
+      <Section className="flex flex-col items-center justify-center min-h-screen pt-20">
+        <Container className="max-w-md">
+          <FadeIn>
+            <Card variant="glass" className="relative p-8 text-center space-y-6">
+              <Glow className="top-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-yellow-500/20" />
+              
+              <div className="space-y-2">
+                <h2 className="text-4xl font-extrabold tracking-tight">Daily Check-In</h2>
+                <p className="text-neutral-400 text-sm">Build your streak on Celo with zero fees.</p>
               </div>
-            )}
-          </div>
-        )}
-      </nav>
 
-      {/* Hero Section */}
-      <div className="max-w-md w-full rounded-3xl overflow-hidden glass-panel border border-white/10 bg-white/5 backdrop-blur-2xl shadow-2xl relative p-8 text-center space-y-6">
-        
-        {/* Glow effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-yellow-500/20 blur-[100px] -z-10 rounded-full pointer-events-none" />
+              {isMiniPay && (
+                <div className="flex justify-center">
+                  <Badge variant="success" dot>MiniPay Detected</Badge>
+                </div>
+              )}
 
-        <div className="space-y-2">
-          <h2 className="text-4xl font-extrabold tracking-tight">Daily Check-In</h2>
-          <p className="text-neutral-400">Build your streak on Celo with zero fees.</p>
-        </div>
+              <StreakCounter count={streak} />
 
-        {isMiniPay && (
-          <div className="inline-flex items-center space-x-2 px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs font-semibold border border-green-500/20">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span>MiniPay Detected</span>
-          </div>
-        )}
+              <div className="space-y-4">
+                <CheckInButton 
+                  isLoading={isLoading} 
+                  onClick={account ? handleCheckIn : () => setShowWallets(!showWallets)} 
+                  account={account} 
+                />
+                
+                {!account && showWallets && (
+                  <FadeIn>
+                    <div className="grid gap-2 mt-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                      <button onClick={() => connectSpecificWallet('OKX')} className="w-full py-3 text-sm font-semibold hover:bg-white/10 rounded-xl transition-colors border border-white/5">OKX Wallet</button>
+                      <button onClick={() => connectSpecificWallet('BITGET')} className="w-full py-3 text-sm font-semibold hover:bg-white/10 rounded-xl transition-colors border border-white/5">Bitget Wallet</button>
+                      <button onClick={() => connectSpecificWallet('METAMASK')} className="w-full py-3 text-sm font-semibold hover:bg-white/10 rounded-xl transition-colors border border-white/5">MetaMask / MiniPay</button>
+                    </div>
+                  </FadeIn>
+                )}
+              </div>
 
-        <div className="py-6 space-y-3">
-          <div className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-orange-500 drop-shadow-sm">
-            {streak}
-          </div>
-          <div className="text-sm font-medium text-neutral-500 uppercase tracking-widest">
-            Day Streak
-          </div>
-        </div>
+              <p className="text-xs text-neutral-500 mt-4 leading-relaxed">
+                Celo Proof of Ship submission. MiniPay gas fee abstraction enables seamless daily check-ins for the global Celo community.
+              </p>
+            </Card>
+          </FadeIn>
+          
+          <FadeIn delay={0.2}>
+            <StreakHistory />
+          </FadeIn>
 
-        <button
-          onClick={account ? handleCheckIn : () => setShowWallets(true)}
-          disabled={isLoading}
-          className={`w-full py-4 rounded-2xl font-bold text-lg transition-all duration-500 shadow-[0_0_40px_-10px_rgba(234,179,8,0.5)] 
-            ${isLoading ? 'bg-neutral-800 text-neutral-400 scale-90' : 'bg-gradient-to-r from-yellow-500 to-amber-600 hover:to-amber-500 text-white hover:scale-[1.02] active:scale-[0.98]'}`}
-        >
-          {isLoading ? "Confirming Request..." : account ? "Check In Now" : "Connect to Check In"}
-        </button>
+          <FadeIn delay={0.3}>
+            <Leaderboard />
+          </FadeIn>
+        </Container>
+      </Section>
 
-        <p className="text-xs text-neutral-500 mt-4 px-4">
-          Celo Proof of Ship submission. MiniPay gas fee abstraction enables seamless daily check-ins.
-        </p>
-      </div>
+      <Section className="flex justify-center border-t border-white/5 bg-neutral-900/30">
+        <Newsletter />
+      </Section>
 
+      <FAQSection />
+
+      <Footer />
     </main>
   );
 }
