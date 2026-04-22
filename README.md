@@ -81,3 +81,4 @@ Network: Celo Alfajores Testnet / Mainnet
 <!-- style: adjust spacing between dashboard cards -->
 <!-- feat: add loading state to recent activity feed -->
 <!-- docs: update contributors section in README -->
+<!-- chore: add .prettierrc for code formatting -->
