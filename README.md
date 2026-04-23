@@ -1,68 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MiniPay Streak - Celo Daily Check-in
 
-## Getting Started
+MiniPay Streak is a decentralized application built on the Celo blockchain that rewards users for maintaining daily check-in habits. Integrated with MiniPay, it offers a gas-abstracted, seamless experience for mobile users.
 
-First, run the development server:
+## 🚀 Getting Started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Node.js](https://nodejs.org/en/) (v18.x or later)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [MiniPay](https://www.opera.com/products/minipay) wallet or any Celo-compatible wallet.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/mini-pay-app.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables:
+   Create a `.env.local` file and add your contract addresses and RPC URLs.
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+## 🏗️ Project Architecture
 
-To learn more about Next.js, take a look at the following resources:
+The project follows a modern monorepo-style structure:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/contracts`: Solidity smart contracts for the Daily Streak logic.
+- `/src/app`: Next.js App Router for page management.
+- `/src/components`: Reusable UI and business logic components.
+- `/src/utils`: Helper functions for formatting and web3 interactions.
+- `/src/hooks`: Custom React hooks for state management.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌟 Features
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-## Project Architecture
-Built with Next.js, Tailwind CSS, and Solidity.
-
-
-## MiniPay Integration
-Integrates MiniPay provider for seamless gas-fee abstracted transactions.
-
-
-## Smart Contract
-The DailyStreak contract manages the logic for users to maintain a daily check-in sequence.
-
-
-## Deployment
-Network: Celo Alfajores Testnet / Mainnet
-
-## Features
 - **Daily Streak Tracking**: Build and maintain your streak on the Celo blockchain.
-- **MiniPay Integration**: Seamless experience for MiniPay users.
-- **Zero Gas Fees**: Leveraging Celo's gas fee abstraction.
-- **Premium UI**: Modern design with glassmorphism and animations.
+- **MiniPay Integration**: Seamless experience for MiniPay users with gas fee abstraction.
+- **Zero Gas Fees**: Leveraging Celo's gas fee abstraction for a better user experience.
+- **Premium UI**: Modern design with glassmorphism, smooth animations, and responsive layouts.
+- **Milestone Rewards**: Track your progress and unlock rewards as you reach streak milestones.
 
-## Tech Stack
+## 🛠️ Tech Stack
+
 - **Frontend**: Next.js 15, React 19, Tailwind CSS 4
-- **Web3**: Ethers.js v6
+- **Web3**: Ethers.js v6, Viem
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
-- **Blockchain**: Celo Mainnet
+- **Blockchain**: Celo Mainnet / Alfajores Testnet
+- **Smart Contracts**: Solidity 0.8.20
+
 <!-- refactor: optimize rendering performance in Leaderboard -->
 <!-- style: adjust typography for better readability on mobile -->
 <!-- docs: clarify smart contract interaction in README -->
