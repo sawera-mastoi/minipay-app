@@ -8,8 +8,8 @@ pragma solidity ^0.8.20;
  * Optimized for MiniPay users with low gas overhead.
  */
 contract DailyStreak {
-    // Current version of the contract
-    string public constant VERSION = "1.1.0";
+    // Current version of the contract (more gas efficient as bytes32)
+    bytes32 public constant VERSION = "1.1.1";
 
     // Mapping from user address to their current streak count
     mapping(address => uint256) public userStreakCount;
