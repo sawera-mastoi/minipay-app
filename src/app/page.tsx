@@ -11,7 +11,6 @@ import { Card, Glow, FadeIn, Badge } from '../components/ui';
 import { StreakCounter, CheckInButton, StreakHistory, Leaderboard } from '../components/streak';
 
 // Import custom hooks
-import { useWeb3 } from '../hooks/useWeb3';
 import { useToast } from '../hooks/useToast';
 import { useConfetti } from '../hooks/useConfetti';
 
