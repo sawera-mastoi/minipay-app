@@ -1,6 +1,18 @@
 {
   "name": "mini-pay-app",
   "version": "0.1.0",
+  "description": "A daily streak tracking DApp built for the Celo MiniPay ecosystem.",
+  "author": "MiniPay Streak Team",
+  "license": "MIT",
+  "keywords": [
+    "celo",
+    "minipay",
+    "blockchain",
+    "streak",
+    "dapp",
+    "nextjs",
+    "web3"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev",
