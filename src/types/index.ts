@@ -26,3 +26,19 @@ export interface TransactionHistory {
   type: 'check-in' | 'reward';
   status: 'pending' | 'confirmed' | 'failed';
 }
+
+export interface Milestone {
+  id: string;
+  day: number;
+  reward: string;
+  isCompleted: boolean;
+  title: string;
+  description?: string;
+}
+
+export enum StreakStatus {
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
+  BROKEN = 'broken',
+  COMPLETED = 'completed'
+}
