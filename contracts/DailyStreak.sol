@@ -19,11 +19,13 @@ contract DailyStreak {
 
     /**
      * @notice Emitted when a user successfully checks in.
-     * @param user The address of the user who checked in.
-     * @param currentStreak The new streak count for the user.
-     * @param checkInTime The timestamp of the check-in.
      */
     event UserCheckedIn(address indexed user, uint256 currentStreak, uint256 checkInTime);
+
+    /**
+     * @notice Emitted when a user's streak is reset due to inactivity.
+     */
+    event StreakReset(address indexed user, uint256 lastStreak, uint256 resetTime);
 
     // One day expressed in seconds
     uint256 public constant SECONDS_IN_A_DAY = 1 days;
@@ -45,6 +47,9 @@ contract DailyStreak {
         // 1. If it's the first time or they missed the 48-hour window, reset to 1
         // 2. If they are within the 24-48 hour window, increment the streak
         if (lastCheckIn == 0 || block.timestamp > lastCheckIn + (2 * SECONDS_IN_A_DAY)) {
+            if (userStreakCount[msg.sender] > 0) {
+                emit StreakReset(msg.sender, userStreakCount[msg.sender], block.timestamp);
+            }
             userStreakCount[msg.sender] = 1;
         } else {
             userStreakCount[msg.sender] += 1;
