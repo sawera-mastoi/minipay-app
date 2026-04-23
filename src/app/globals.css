@@ -75,3 +75,18 @@ body {
     line-height: 1.1;
   }
 }
+
+/* Typography Utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.heading-gradient {
+  background: linear-gradient(to bottom right, #fff 30%, rgba(255, 255, 255, 0.5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-subtle {
+  color: var(--neutral-400);
+}
