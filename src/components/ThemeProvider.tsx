@@ -1,13 +1,56 @@
-import React, { createContext, useContext, useState } from 'react';
+'use client';
 
-const ThemeContext = createContext({ theme: 'dark', toggleTheme: () => {} });
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
+type Theme = 'dark' | 'light';
+
+interface ThemeContextType {
+  theme: Theme;
+  toggleTheme: () => void;
+}
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+/**
+ * ThemeProvider component that manages the dark/light mode state.
+ * Persists user preference to local storage.
+ */
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState('dark');
-  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  const [theme, setTheme] = useState<Theme>('dark');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as Theme;
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return <div className="dark min-h-screen bg-black">{children}</div>;
+  }
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={theme}>{children}</div>
+      <div className={`${theme} min-h-screen transition-colors duration-300 bg-neutral-50 dark:bg-black text-neutral-900 dark:text-white`}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
+};
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
 };
