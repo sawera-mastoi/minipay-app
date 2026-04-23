@@ -21,6 +21,25 @@ export const formatCurrency = (value: number | string, currency: string = 'CELO'
 };
 
 /**
+ * Formats a value as a CELO currency string with optional symbol.
+ * @param value The value in wei or nominal units.
+ * @param showSymbol Whether to append the CELO symbol.
+ * @returns Formatted string.
+ */
+export const formatCelo = (value: bigint | string | number, showSymbol: boolean = true): string => {
+  const nominalValue = typeof value === 'bigint' 
+    ? Number(value) / 1e18 
+    : Number(value);
+    
+  const formatted = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 6,
+  }).format(nominalValue);
+
+  return showSymbol ? `${formatted} CELO` : formatted;
+};
+
+/**
  * Copies a string to the user's clipboard.
  * @param text The text to copy.
  * @returns A promise that resolves when the text is copied.
