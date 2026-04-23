@@ -24,7 +24,12 @@ export const Card = ({ children, className = '', variant = 'default' }: CardProp
   };
 
   return (
-    <div className={`rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-yellow-500/5 ${variants[variant]} ${className}`}>
+    <div className={`
+      rounded-3xl overflow-hidden transition-all duration-500 
+      hover:shadow-[0_20px_50px_rgba(234,179,8,0.1)] 
+      hover:-translate-y-1
+      ${variants[variant]} ${className}
+    `}>
       {children}
     </div>
   );
