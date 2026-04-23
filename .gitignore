@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# blockchain / hardhat
+artifacts/
+cache/
+typechain-types/
+/contracts/flattened/
+*.db
+.openzeppelin/
