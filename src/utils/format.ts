@@ -9,6 +9,15 @@ export const formatAddress = (address: string): string => {
 };
 
 /**
+ * Validates if a string is a valid Ethereum/Celo address.
+ * @param address The address to validate.
+ * @returns True if valid, false otherwise.
+ */
+export const isValidAddress = (address: string): boolean => {
+  return /^0x[a-fA-F0-9]{40}$/.test(address);
+};
+
+/**
  * Formats a number as a currency string.
  * @param value The value to format.
  * @param currency The currency symbol (default: "CELO").
@@ -33,7 +42,7 @@ export const formatCelo = (value: bigint | string | number, showSymbol: boolean 
     
   const formatted = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
-    maximumFractionDigits: 6,
+    maximumFractionDigits: 2,
   }).format(nominalValue);
 
   return showSymbol ? `${formatted} CELO` : formatted;
