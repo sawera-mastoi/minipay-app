@@ -21,11 +21,4 @@ export const Container = ({ children, className = '', centered = false }: Contai
   </div>
 );
 
-/**
- * Section component for vertical spacing between content blocks.
- */
-export const Section = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
-  <section className={`py-12 sm:py-16 lg:py-20 ${className}`}>
-    {children}
-  </section>
-);
+

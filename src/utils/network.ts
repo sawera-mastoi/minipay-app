@@ -1,4 +1,4 @@
-import { CELO_CHAIN_ID, ALF AJORES_CHAIN_ID } from './constants';
+import { CELO_CHAIN_ID, ALFAJORES_CHAIN_ID } from './constants';
 
 /**
  * Checks if the given chain ID is a supported Celo network.
@@ -7,7 +7,7 @@ import { CELO_CHAIN_ID, ALF AJORES_CHAIN_ID } from './constants';
  */
 export const isSupportedNetwork = (chainId: number | string): boolean => {
   const id = typeof chainId === 'string' ? parseInt(chainId, 16) : chainId;
-  return id === CELO_CHAIN_ID || id === ALF AJORES_CHAIN_ID;
+  return id === CELO_CHAIN_ID || id === ALFAJORES_CHAIN_ID;
 };
 
 /**
@@ -18,6 +18,6 @@ export const isSupportedNetwork = (chainId: number | string): boolean => {
 export const getNetworkName = (chainId: number | string): string => {
   const id = typeof chainId === 'string' ? parseInt(chainId, 16) : chainId;
   if (id === CELO_CHAIN_ID) return 'Celo Mainnet';
-  if (id === ALF AJORES_CHAIN_ID) return 'Celo Alfajores';
+  if (id === ALFAJORES_CHAIN_ID) return 'Celo Alfajores';
   return 'Unsupported Network';
 };
