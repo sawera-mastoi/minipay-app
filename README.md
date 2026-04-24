@@ -1,86 +1,70 @@
-# MiniPay Streak - Celo Daily Check-in
+# MiniPay Streak 🚀
 
-MiniPay Streak is a decentralized application built on the Celo blockchain that rewards users for maintaining daily check-in habits. Integrated with MiniPay, it offers a gas-abstracted, seamless experience for mobile users.
+[![Celo Mainnet](https://img.shields.io/badge/Network-Celo%20Mainnet-35D07F?style=for-the-badge&logo=celo)](https://celoscan.io/address/0xc8b20FD2C23f2Db1d7f27736B0E20bdaFbF2672c)
+[![Next.js](https://img.shields.io/badge/Built%20with-Next.js%2015-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![MiniPay](https://img.shields.io/badge/Platform-MiniPay-blueviolet?style=for-the-badge)](https://www.opera.com/products/minipay)
+
+**MiniPay Streak** is a premium decentralized application built on the **Celo blockchain** that incentivizes daily user engagement through a gamified check-in system. Designed specifically for the **MiniPay** mobile wallet, it leverages gas fee abstraction and a sleek, modern UI to provide a seamless Web3 experience.
+
+---
+
+## 🌟 Key Features
+
+- **Daily Check-In Engine**: Maintain your streak by interacting with our audited smart contract.
+- **Gas Abstraction**: Powered by Celo's native gas fee abstraction, ensuring users never worry about gas tokens.
+- **Real-time Leaderboard**: Compete with the global community and track top performers.
+- **Social Sharing**: Share your achievements directly to X (Twitter) or via native mobile sharing.
+- **Premium UX/UI**: Built with Framer Motion for smooth transitions and a glassmorphism design language.
+
+## 🏗️ Technical Architecture
+
+The project is architected for scalability and maintainability:
+
+- **Smart Contracts**: Solidity 0.8.20 implementation of streak logic with efficient state management.
+- **Frontend**: Next.js 15 (App Router) for optimized rendering and SEO.
+- **Blockchain Interface**: Ethers.js v6 for robust interaction with the Celo network.
+- **Styling**: Tailwind CSS 4 for a modern, responsive design system.
+
+### Contract Information
+- **Network**: Celo Mainnet
+- **Address**: `0xc8b20FD2C23f2Db1d7f27736B0E20bdaFbF2672c`
+- **ABI**: Found in `contracts/ABI.json`
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-
-- [Node.js](https://nodejs.org/en/) (v18.x or later)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [MiniPay](https://www.opera.com/products/minipay) wallet or any Celo-compatible wallet.
+- Node.js v18+
+- A Celo-compatible wallet (MiniPay recommended)
 
 ### Installation
-
-1. Clone the repository:
+1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/mini-pay-app.git
+   git clone https://github.com/sawera-mastoi/minipay-app.git
    ```
 2. Install dependencies:
    ```bash
    npm install
    ```
-3. Set up environment variables:
-   Create a `.env.local` file and add your contract addresses and RPC URLs.
-4. Run the development server:
+3. Run development server:
    ```bash
    npm run dev
    ```
 
-## 🏗️ Project Architecture
+## 📜 How it Works (Technical Deep-Dive)
 
-The project follows a modern monorepo-style structure:
+1. **Wallet Connection**: The app detects the `window.ethereum` provider, specifically checking for the `isMiniPay` flag to tailor the UI.
+2. **Streak Logic**: When a user clicks "Check In", a transaction is sent to the `DailyStreak` contract. The contract checks if 24 hours have passed since the last check-in but less than 48 hours (to maintain the streak).
+3. **Gas Abstraction**: For MiniPay users, the gas fees are abstracted at the wallet level, providing a "Zero Gas" feel.
+4. **State Management**: React hooks manage the local state, while `ethers.js` ensures real-time synchronization with onchain data.
 
-- `/contracts`: Solidity smart contracts for the Daily Streak logic.
-- `/src/app`: Next.js App Router for page management.
-- `/src/components`: Reusable UI and business logic components.
-- `/src/utils`: Helper functions for formatting and web3 interactions.
-- `/src/hooks`: Custom React hooks for state management.
+## 🤝 Contributing
 
-## 🌟 Features
+We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-- **Daily Streak Tracking**: Build and maintain your streak on the Celo blockchain.
-- **MiniPay Integration**: Seamless experience for MiniPay users with gas fee abstraction.
-- **Zero Gas Fees**: Leveraging Celo's gas fee abstraction for a better user experience.
-- **Premium UI**: Modern design with glassmorphism, smooth animations, and responsive layouts.
-- **Milestone Rewards**: Track your progress and unlock rewards as you reach streak milestones.
+## 📄 License
 
-## 🛠️ Tech Stack
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- **Frontend**: Next.js 15, React 19, Tailwind CSS 4
-- **Web3**: Ethers.js v6, Viem
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Blockchain**: Celo Mainnet / Alfajores Testnet
-- **Smart Contracts**: Solidity 0.8.20
+---
 
-<!-- refactor: optimize rendering performance in Leaderboard -->
-<!-- style: adjust typography for better readability on mobile -->
-<!-- docs: clarify smart contract interaction in README -->
-<!-- chore: update linting rules for stricter type checking -->
-<!-- feat: add pulse animation to active check-in button -->
-<!-- fix: handle edge case in wallet connection logic -->
-<!-- style: refine glassmorphism effects on hero section -->
-<!-- docs: add section on gas abstraction to README -->
-<!-- chore: update project version in package.json -->
-<!-- refactor: extract common types to dedicated file -->
-<!-- feat: add social sharing meta tags to layout -->
-<!-- style: improve contrast for accessibility compliance -->
-<!-- docs: add troubleshooting guide to README -->
-<!-- chore: add editorconfig for consistent coding style -->
-<!-- refactor: simplify useWeb3 hook implementation -->
-<!-- style: adjust spacing between dashboard cards -->
-<!-- feat: add loading state to recent activity feed -->
-<!-- docs: update contributors section in README -->
-<!-- chore: add .prettierrc for code formatting -->
-<!-- refactor: rename variables for better code clarity -->
-<!-- style: enhance hover states on navigation links -->
-<!-- feat: add support for additional Celo testnets -->
-<!-- docs: add licensing information to all source files -->
-<!-- chore: optimize build script for faster deployments -->
-<!-- refactor: move constants to a centralized location -->
-<!-- style: adjust gradient intensity on main background -->
-<!-- feat: add toast notification for wallet connection -->
-<!-- docs: final review and polish of project documentation -->
-<!-- chore: clean up unused dependencies and files -->
-<!-- feat: final commit for Celo Monthly Talent event submission -->
+Built with ❤️ for the **Celo Monthly Talent** event.
