@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { BrowserProvider, Contract } from "ethers";
 import { CONTRACT_ADDRESS } from "../utils/constants";
 import ABI from "../../contracts/ABI.json";
+import { Share2 } from "lucide-react";
+import { shareStreakNative } from "../utils/share";
+import { Button } from "../components/ui/Button";
 
 // Import modular components
 import { Navbar, Footer, Section, Container, FAQSection, Newsletter } from '../components/layout';
@@ -153,6 +156,19 @@ export default function Home() {
                   onClick={account ? handleCheckIn : () => setShowWallets(!showWallets)} 
                   account={account} 
                 />
+                
+                {account && streak > 0 && (
+                  <FadeIn delay={0.1}>
+                    <Button 
+                      variant="outline" 
+                      className="w-full"
+                      onClick={() => shareStreakNative({ streak, address: account })}
+                      leftIcon={<Share2 className="w-4 h-4" />}
+                    >
+                      Share Streak
+                    </Button>
+                  </FadeIn>
+                )}
                 
                 {!account && showWallets && (
                   <FadeIn>
