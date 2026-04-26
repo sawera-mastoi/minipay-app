@@ -44,17 +44,18 @@ export const useWeb3 = () => {
     if (!walletProvider) return;
     
     try {
-      const accounts = await walletProvider.request({ method: 'eth_requestAccounts' }) as string[];
-      const currentChainId = await walletProvider.request({ method: 'eth_chainId' }) as string;
+      const accounts = await walletProvider.request({ method: "eth_requestAccounts" }) as string[];
+      const currentChainId = await walletProvider.request({ method: "eth_chainId" }) as string;
       
       setProvider(walletProvider);
       handleAccountsChanged(accounts);
       checkNetwork(currentChainId);
 
       // Setup listeners
-      if (walletProvider.on) {
-        walletProvider.on('accountsChanged', handleAccountsChanged);
-        walletProvider.on('chainChanged', handleChainChanged);
+      const providerWithEvents = walletProvider as any;
+      if (providerWithEvents.on) {
+        providerWithEvents.on('accountsChanged', handleAccountsChanged);
+        providerWithEvents.on('chainChanged', handleChainChanged);
       }
 
     } catch (error) {
