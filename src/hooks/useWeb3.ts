@@ -57,7 +57,8 @@ export const useWeb3 = () => {
       handleAccountsChanged(accounts);
       checkNetwork(currentChainId);
 
-      const providerWithEvents = walletProvider as { on?: (event: string, cb: (...args: unknown[]) => void) => void };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const providerWithEvents = walletProvider as { on?: (event: string, cb: (...args: any[]) => void) => void };
       if (providerWithEvents.on) {
         providerWithEvents.on('accountsChanged', handleAccountsChanged);
         providerWithEvents.on('chainChanged', handleChainChanged);
@@ -70,7 +71,8 @@ export const useWeb3 = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const eth = window.ethereum as MiniPayProvider | undefined;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const eth = (window as any).ethereum as MiniPayProvider | undefined;
       if (eth?.isMiniPay) {
         setTimeout(() => setIsMiniPay(true), 0);
       }

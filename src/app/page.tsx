@@ -43,7 +43,8 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const eth = window.ethereum as EthereumProvider | undefined;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const eth = (window as any).ethereum as EthereumProvider | undefined;
       if (eth?.isMiniPay) {
         setTimeout(() => setIsMiniPay(true), 0);
       }
