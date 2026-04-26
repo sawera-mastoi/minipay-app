@@ -15,7 +15,9 @@ interface State {
 }
 
 /**
- * ErrorBoundary component to catch JavaScript errors anywhere in its child component tree.
+ * A robust Error Boundary component that gracefully catches and handles runtime exceptions.
+ * Prevents the entire application from crashing and provides users with a friendly recovery UI.
+ * Highly recommended for Web3 interactions where RPC failures or unexpected chain states may occur.
  */
 export class ErrorBoundary extends Component<Props, State> {
   public state: State = {
