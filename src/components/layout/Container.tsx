@@ -9,7 +9,10 @@ interface ContainerProps {
 }
 
 /**
- * Main container component for layout consistency.
+ * A foundational layout component that ensures consistent horizontal padding and max-width.
+ * Provides optional vertical centering for hero sections and impact layouts.
+ * 
+ * @param {ContainerProps} props - The component props.
  */
 export const Container = ({ children, className = '', centered = false }: ContainerProps) => (
   <div className={`
