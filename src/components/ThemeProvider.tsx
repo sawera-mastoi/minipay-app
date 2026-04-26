@@ -12,8 +12,9 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 /**
- * ThemeProvider component that manages the dark/light mode state.
- * Persists user preference to local storage.
+ * ThemeProvider component that orchestrates the application's visual theme (Dark/Light).
+ * Orchestrates CSS class toggling, LocalStorage persistence, and prevents hydration flicker.
+ * Optimized for Celo's "Prosperity" design language.
  */
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>('dark');
