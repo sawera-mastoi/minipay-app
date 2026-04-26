@@ -10,7 +10,8 @@ interface AnimationProps {
 }
 
 /**
- * FadeIn animation component.
+ * A standard Fade-In animation with a subtle upward slide.
+ * Perfect for entry sections and text elements.
  */
 export const FadeIn = ({ children, delay = 0, className = '' }: AnimationProps) => (
   <motion.div
@@ -24,7 +25,8 @@ export const FadeIn = ({ children, delay = 0, className = '' }: AnimationProps) 
 );
 
 /**
- * SlideIn animation component.
+ * A horizontal Slide-In animation from the left.
+ * Ideal for sidebar elements or staggered list items.
  */
 export const SlideIn = ({ children, delay = 0, className = '' }: AnimationProps) => (
   <motion.div
@@ -38,7 +40,8 @@ export const SlideIn = ({ children, delay = 0, className = '' }: AnimationProps)
 );
 
 /**
- * ScaleIn animation component for buttons and icons.
+ * A pop-in Scale animation with an organic back-out easing.
+ * Best used for buttons, icons, and small UI highlights.
  */
 export const ScaleIn = ({ children, delay = 0, className = '' }: AnimationProps) => (
   <motion.div
@@ -52,7 +55,8 @@ export const ScaleIn = ({ children, delay = 0, className = '' }: AnimationProps)
 );
 
 /**
- * PageTransition wrapper for smooth route changes.
+ * A comprehensive Page Transition wrapper that ensures smooth exits and entries.
+ * Leverages Framer Motion's AnimatePresence for state-aware transitions.
  */
 export const PageTransition = ({ children }: { children: React.ReactNode }) => (
   <AnimatePresence mode="wait">
