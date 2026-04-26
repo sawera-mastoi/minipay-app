@@ -17,6 +17,10 @@ const faqs = [
   },
 ];
 
+/**
+ * A dedicated section for addressing common user inquiries about MiniPay Streak.
+ * Features a clean, containerized layout with interactive FAQ items.
+ */
 export const FAQSection = () => (
   <Container className='max-w-2xl py-20'>
     <h2 className='text-3xl font-bold mb-8 text-center'>Frequently Asked Questions</h2>
