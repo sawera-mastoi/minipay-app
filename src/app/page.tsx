@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BrowserProvider, Contract } from "ethers";
+import { BrowserProvider, Contract, type Eip1193Provider } from "ethers";
 import { CONTRACT_ADDRESS } from "../utils/constants";
 import ABI from "../../contracts/ABI.json";
 import { Share2 } from "lucide-react";
@@ -30,7 +30,7 @@ export default function Home() {
   const [account, setAccount] = useState<string | null>(null);
   const [streak, setStreak] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [activeProvider, setActiveProvider] = useState<any>(null);
+  const [activeProvider, setActiveProvider] = useState<Eip1193Provider | null>(null);
   const [showWallets, setShowWallets] = useState(false);
 
   // Modular hooks
@@ -38,12 +38,15 @@ export default function Home() {
   const { fire: fireConfetti } = useConfetti();
 
   useEffect(() => {
-    if (typeof window !== "undefined" && (window as any).ethereum?.isMiniPay) {
-      setIsMiniPay(true);
+    if (typeof window !== "undefined") {
+      const eth = (window as any).ethereum;
+      if (eth?.isMiniPay) {
+        setIsMiniPay(true);
+      }
     }
   }, []);
 
-  const switchToCelo = async (provider: any) => {
+  const switchToCelo = async (provider: Eip1193Provider) => {
     try {
       await provider.request({
         method: "wallet_switchEthereumChain",
@@ -66,7 +69,7 @@ export default function Home() {
   };
 
   const connectSpecificWallet = async (walletType: string) => {
-    let targetProvider = null;
+    let targetProvider: Eip1193Provider | null = null;
     
     if (typeof window !== "undefined") {
       if (walletType === "OKX" && (window as any).okxwallet) {
@@ -84,7 +87,7 @@ export default function Home() {
     }
 
     try {
-      const accounts = await targetProvider.request({ method: "eth_requestAccounts" });
+      const accounts = await targetProvider.request({ method: "eth_requestAccounts" }) as string[];
       if (accounts.length > 0) {
         await switchToCelo(targetProvider);
         setActiveProvider(targetProvider);
@@ -92,7 +95,7 @@ export default function Home() {
         
         const ethersProvider = new BrowserProvider(targetProvider);
         const contract = new Contract(CONTRACT_ADDRESS, ABI, ethersProvider);
-        const currentStreak = await contract.streaks(accounts[0]);
+        const currentStreak = await contract.getFunction("streaks")(accounts[0]);
         setStreak(Number(currentStreak));
         setShowWallets(false);
         showToast('Wallet connected successfully!');
@@ -113,7 +116,7 @@ export default function Home() {
       const signer = await ethersProvider.getSigner();
       const contract = new Contract(CONTRACT_ADDRESS, ABI, signer);
       
-      const tx = await contract.checkIn();
+      const tx = await contract.getFunction("checkIn")();
       await tx.wait();
       
       setStreak((prev) => prev + 1);

@@ -1,7 +1,11 @@
 import React from 'react';
-import { TransactionItem } from './TransactionItem';
+import { TransactionItem, type TransactionItemProps } from './TransactionItem';
 
-export const TransactionList = ({ transactions }: { transactions: any[] }) => (
+/**
+ * A list component for displaying recent blockchain transactions.
+ * Staggered rendering of TransactionItem components.
+ */
+export const TransactionList = ({ transactions }: { transactions: TransactionItemProps[] }) => (
   <div className='divide-y divide-white/5'>
     {transactions.length === 0 ? (
       <div className='p-8 text-center text-neutral-500 text-sm'>No transactions found.</div>

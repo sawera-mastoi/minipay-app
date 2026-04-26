@@ -1,5 +1,9 @@
 import confetti from 'canvas-confetti';
 
+/**
+ * A delightful hook for triggering particle celebration effects.
+ * Ideal for milestone achievements and successful check-ins on Celo.
+ */
 export const useConfetti = () => {
   const fire = () => {
     const duration = 3 * 1000;
@@ -8,7 +12,7 @@ export const useConfetti = () => {
 
     const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-    const interval: any = setInterval(function() {
+    const interval = setInterval(function() {
       const timeLeft = animationEnd - Date.now();
 
       if (timeLeft <= 0) {
