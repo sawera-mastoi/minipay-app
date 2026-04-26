@@ -4,18 +4,22 @@ Thank you for your interest in contributing to MiniPay Streak! We welcome contri
 
 ## How to Contribute
 
-1.  **Fork the Repository**: Create your own fork of the project.
-2.  **Create a Branch**: Create a branch for your feature or bug fix.
-3.  **Make Changes**: Implement your changes with clear, concise code.
-4.  **Write Tests**: If applicable, add tests for your changes.
-5.  **Submit a Pull Request**: Submit a PR with a detailed description of your changes.
+1.  **Fork the Repository**: Create your own copy of the project.
+2.  **Create a Branch**: Use descriptive names like `feature/new-button` or `fix/streak-bug`.
+3.  **Write High-Quality Code**:
+    - Ensure all components are responsive and optimized for MiniPay.
+    - Use Tailwind CSS 4 for styling.
+    - Add JSDoc to all new functions and components.
+    - Ensure TypeScript types are strict and well-defined.
+4.  **Commit Changes**: Use [Conventional Commits](https://www.conventionalcommits.org/).
+5.  **Submit a Pull Request**: Provide a clear description and screenshots of UI changes.
 
 ## Coding Standards
 
-- Use TypeScript for all frontend code.
-- Follow the existing component structure.
-- Ensure all components are responsive and accessible.
-- Use meaningful commit messages.
+- **TypeScript**: Strict type checking is required.
+- **Components**: Follow the atomic design principles in `src/components`.
+- **Styling**: Prefer vanilla Tailwind classes over custom CSS.
+- **Testing**: Verify all changes on the MiniPay mobile browser.
 
 ## Reporting Issues
 

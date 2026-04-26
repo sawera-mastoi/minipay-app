@@ -1,12 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 /**
- * Custom hook for persistent state in local storage.
- * @param key The storage key.
- * @param initialValue The initial value if key doesn't exist.
- * @returns [storedValue, setValue]
+ * A robust custom hook for persistent state management using the browser's LocalStorage API.
+ * Features automatic JSON serialization/deserialization and SSR safety.
+ * 
+ * @template T - The type of the value to store.
+ * @param {string} key - The unique identifier used to store the value in LocalStorage.
+ * @param {T} initialValue - The fallback value used if no existing value is found in storage.
+ * @returns {readonly [T, (value: T | ((val: T) => T)) => void]} A stateful value and a function to update it.
  */
 export function useLocalStorage<T>(key: string, initialValue: T) {
   // Initialize state with value from local storage or initialValue

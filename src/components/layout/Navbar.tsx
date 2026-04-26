@@ -1,7 +1,7 @@
 import { formatAddress } from '../../utils/format';
 import React from 'react';
 import { Container } from './Container';
-import { Zap, Wallet, Bell } from 'lucide-react';
+import { Zap, Wallet } from 'lucide-react';
 import { NotificationCenter, ThemeToggle } from '../ui';
 import { Button } from '../ui/Button';
 

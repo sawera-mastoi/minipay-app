@@ -16,7 +16,14 @@ If you discover a security vulnerability within this project, please report it i
 ### Process
 
 1.  **Do not open a public issue.**
-2.  **Contact the team** via the contact information provided in the repository (if available) or via a private message.
+2.  **Contact the team** via security@minipaystreak.io (placeholder) or open a private security advisory on GitHub.
 3.  **Provide details**: Include a description of the vulnerability, steps to reproduce it, and the potential impact.
 
-We will acknowledge your report within 48 hours and provide a timeline for a fix if necessary.
+## Smart Contract Security
+
+The `DailyStreak` contract is the core of our application. We prioritize its security through:
+- **Simplified Logic**: Reducing complexity to minimize attack vectors.
+- **Regular Audits**: Periodic internal reviews of contract state and logic.
+- **Circuit Breakers**: (If applicable) Administrative controls for emergency pauses.
+
+Always verify the contract address on CeloScan before interacting.

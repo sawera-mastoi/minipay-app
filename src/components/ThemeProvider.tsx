@@ -22,19 +22,21 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
+    if (savedTheme && savedTheme !== theme) {
+      setTimeout(() => setTheme(savedTheme), 0);
     }
-    setMounted(true);
-  }, []);
+    setTimeout(() => setMounted(true), 0);
+  }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      return next;
+    });
   };
 
-  // Prevent hydration mismatch
+  // Prevent hydration mismatch by rendering a consistent default on the server
   if (!mounted) {
     return <div className="dark min-h-screen bg-black">{children}</div>;
   }

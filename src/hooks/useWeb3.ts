@@ -2,6 +2,10 @@ import { useState, useEffect, useCallback } from 'react';
 import { CELO_CHAIN_ID } from '../utils/constants';
 import { type Eip1193Provider } from 'ethers';
 
+interface MiniPayProvider extends Eip1193Provider {
+  isMiniPay?: boolean;
+}
+
 /**
  * Core Web3 hook for managing Celo network connectivity and account state.
  * Specifically optimized for MiniPay detection and gas abstraction support.
@@ -37,10 +41,12 @@ export const useWeb3 = () => {
 
   const handleChainChanged = useCallback((id: string) => {
     checkNetwork(id);
-    window.location.reload();
+    if (typeof window !== 'undefined') {
+      window.location.reload();
+    }
   }, [checkNetwork]);
 
-  const connect = async (walletProvider: Eip1193Provider) => {
+  const connect = useCallback(async (walletProvider: Eip1193Provider) => {
     if (!walletProvider) return;
     
     try {
@@ -51,8 +57,7 @@ export const useWeb3 = () => {
       handleAccountsChanged(accounts);
       checkNetwork(currentChainId);
 
-      // Setup listeners
-      const providerWithEvents = walletProvider as any;
+      const providerWithEvents = walletProvider as { on?: (event: string, cb: (...args: unknown[]) => void) => void };
       if (providerWithEvents.on) {
         providerWithEvents.on('accountsChanged', handleAccountsChanged);
         providerWithEvents.on('chainChanged', handleChainChanged);
@@ -61,13 +66,13 @@ export const useWeb3 = () => {
     } catch (error) {
       console.error('Connection failed', error);
     }
-  };
+  }, [handleAccountsChanged, handleChainChanged, checkNetwork]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const eth = (window as any).ethereum;
+      const eth = window.ethereum as MiniPayProvider | undefined;
       if (eth?.isMiniPay) {
-        setIsMiniPay(true);
+        setTimeout(() => setIsMiniPay(true), 0);
       }
     }
   }, []);

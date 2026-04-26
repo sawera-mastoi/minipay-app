@@ -10,7 +10,10 @@ interface TooltipProps {
 }
 
 /**
- * A lightweight Tooltip component for descriptive hints.
+ * A sophisticated Tooltip component providing contextual hints with fluid animations.
+ * Uses Framer Motion for smooth entry/exit and absolute positioning for precision.
+ * 
+ * @param {TooltipProps} props - The component props.
  */
 export const Tooltip = ({ children, content, position = 'top' }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);

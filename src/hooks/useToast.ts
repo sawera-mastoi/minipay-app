@@ -13,6 +13,10 @@ interface ToastState {
 /**
  * Custom hook for managing toast notifications.
  */
+/**
+ * Custom hook for managing application-wide toast notifications.
+ * Provides a clean API for triggering success, error, and info messages.
+ */
 export const useToast = () => {
   const [toasts, setToasts] = useState<ToastState[]>([]);
 

@@ -17,6 +17,10 @@ import { StreakCounter, CheckInButton, StreakHistory, Leaderboard } from '../com
 import { useToast } from '../hooks/useToast';
 import { useConfetti } from '../hooks/useConfetti';
 
+interface EthereumProvider extends Eip1193Provider {
+  isMiniPay?: boolean;
+}
+
 const CELO_PARAMS = {
   chainId: "0xa4ec", // 42220
   chainName: "Celo Mainnet",
@@ -30,7 +34,7 @@ export default function Home() {
   const [account, setAccount] = useState<string | null>(null);
   const [streak, setStreak] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [activeProvider, setActiveProvider] = useState<Eip1193Provider | null>(null);
+  const [activeProvider, setActiveProvider] = useState<EthereumProvider | null>(null);
   const [showWallets, setShowWallets] = useState(false);
 
   // Modular hooks
@@ -39,21 +43,22 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const eth = (window as any).ethereum;
+      const eth = window.ethereum as EthereumProvider | undefined;
       if (eth?.isMiniPay) {
-        setIsMiniPay(true);
+        setTimeout(() => setIsMiniPay(true), 0);
       }
     }
   }, []);
 
-  const switchToCelo = async (provider: Eip1193Provider) => {
+  const switchToCelo = async (provider: EthereumProvider) => {
     try {
       await provider.request({
         method: "wallet_switchEthereumChain",
         params: [{ chainId: CELO_PARAMS.chainId }],
       });
-    } catch (switchError: any) {
-      if (switchError.code === 4902) {
+    } catch (switchError: unknown) {
+      const error = switchError as { code: number };
+      if (error.code === 4902) {
         try {
           await provider.request({
             method: "wallet_addEthereumChain",
@@ -69,15 +74,20 @@ export default function Home() {
   };
 
   const connectSpecificWallet = async (walletType: string) => {
-    let targetProvider: Eip1193Provider | null = null;
+    let targetProvider: EthereumProvider | null = null;
     
     if (typeof window !== "undefined") {
-      if (walletType === "OKX" && (window as any).okxwallet) {
-        targetProvider = (window as any).okxwallet;
-      } else if (walletType === "BITGET" && (window as any).bitkeep?.ethereum) {
-        targetProvider = (window as any).bitkeep.ethereum;
-      } else if (walletType === "METAMASK" && (window as any).ethereum) {
-        targetProvider = (window as any).ethereum;
+      const win = window as unknown as { 
+        okxwallet?: EthereumProvider; 
+        bitkeep?: { ethereum: EthereumProvider }; 
+        ethereum?: EthereumProvider 
+      };
+      if (walletType === "OKX" && win.okxwallet) {
+        targetProvider = win.okxwallet;
+      } else if (walletType === "BITGET" && win.bitkeep?.ethereum) {
+        targetProvider = win.bitkeep.ethereum;
+      } else if (walletType === "METAMASK" && win.ethereum) {
+        targetProvider = win.ethereum;
       }
     }
 
@@ -122,8 +132,9 @@ export default function Home() {
       setStreak((prev) => prev + 1);
       fireConfetti();
       showToast('Successfully checked in!');
-    } catch (error: any) {
-      console.error(error);
+    } catch (err: unknown) {
+      console.error(err);
+      const error = err as { reason?: string; message?: string };
       showToast(error.reason || error.message || "Transaction failed", 'error');
     } finally {
       setIsLoading(false);

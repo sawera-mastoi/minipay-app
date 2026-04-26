@@ -4,6 +4,13 @@
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to make participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
+## Celo Ecosystem Values
+
+As a project built on Celo, we also adhere to the core values of the Celo community:
+- **Prosperity for Everyone**: We strive to build tools that empower everyone, everywhere.
+- **Inclusion**: We welcome all voices and prioritize accessibility in our code and community.
+- **Humility**: We remain open to feedback and focus on collective success over individual ego.
+
 ## Our Standards
 
 Examples of behavior that contributes to creating a positive environment include:

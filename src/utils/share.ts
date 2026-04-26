@@ -1,5 +1,6 @@
 /**
- * Social sharing utilities for streak achievements.
+ * Social sharing utilities for amplifying streak achievements.
+ * These helpers facilitate community growth and user recognition within the Celo ecosystem.
  */
 
 interface ShareOptions {

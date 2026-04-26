@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from '../ui';
-import { Wallet } from 'lucide-react';
 
 export const WalletConnector = ({ onConnect }: { onConnect: (type: string) => void }) => {
   return (

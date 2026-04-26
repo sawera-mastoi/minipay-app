@@ -18,7 +18,11 @@ interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
 }
 
 /**
- * Premium Button component with Framer Motion animations and multiple variants.
+ * A premium, highly customizable Button component built with Framer Motion.
+ * Supports multiple visual variants, sizes, loading states, and icon integration.
+ * Optimized for touch interactions on the MiniPay mobile wallet.
+ * 
+ * @param {ButtonProps} props - The component props.
  */
 export const Button: React.FC<ButtonProps> = ({ 
   children, 
