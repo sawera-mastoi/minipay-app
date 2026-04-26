@@ -1,6 +1,3 @@
-/**
- * Navbar.tsx component for layout structure.
- */
 import { formatAddress } from '../../utils/format';
 import React from 'react';
 import { Container } from './Container';
@@ -8,6 +5,14 @@ import { Zap, Wallet, Bell } from 'lucide-react';
 import { NotificationCenter, ThemeToggle } from '../ui';
 import { Button } from '../ui/Button';
 
+/**
+ * The primary navigation component for the MiniPay Streak application.
+ * Features a glassmorphism design, brand logo, theme toggling, and wallet status.
+ * Positioned as a fixed header for constant accessibility.
+ * 
+ * @param {object} props - The component props.
+ * @param {string | null} [props.account] - The connected wallet address.
+ */
 export const Navbar = ({ account }: { account?: string | null }) => {
   return (
     <nav className='fixed top-0 w-full z-50 border-b border-white/5 bg-neutral-950/50 backdrop-blur-xl'>
