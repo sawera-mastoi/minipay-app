@@ -144,7 +144,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-yellow-500/30">
-      <Navbar account={account} />
+      <Navbar account={account} onConnect={() => setShowWallets(!showWallets)} />
       
       <Section className="flex flex-col items-center justify-center min-h-screen pt-20">
         <Container className="max-w-md">

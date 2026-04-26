@@ -10,7 +10,6 @@ export const CheckInButton = ({ isLoading, onClick, account }: { isLoading: bool
       onClick={onClick} 
       isLoading={isLoading} 
       className='w-full py-6 text-xl'
-      disabled={!account}
     >
       {isLoading ? 'Confirming...' : account ? 'Check In Now' : 'Connect to Check In'}
     </Button>
