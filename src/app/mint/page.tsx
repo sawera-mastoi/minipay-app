@@ -33,7 +33,7 @@ export default function MintPage() {
     const warriorTypes = ['Cyberpunk', 'Ethereal', 'Gothic', 'Frost', 'Magmatic', 'Ancient'];
     const selectedType = warriorTypes[Math.floor(Math.random() * warriorTypes.length)];
     const prompt = `Premium high-quality 3D portrait of a ${selectedType} Warrior, intricate armor, epic lighting, cinematic, 8k resolution, profile picture style`;
-    const imageUrl = `https://pollinations.ai/p/${encodeURIComponent(prompt)}?width=512&height=512&seed=${seed}&nologo=true`;
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=512&seed=${seed}&nologo=true`;
     
     // Simulate generation time for UX
     setTimeout(() => {

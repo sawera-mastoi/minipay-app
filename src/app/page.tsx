@@ -206,7 +206,7 @@ export default function Home() {
                 <Card variant="glass" className="p-3 border-white/5 group hover:border-yellow-500/30 transition-all duration-500 rounded-3xl overflow-hidden">
                   <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
                     <img 
-                      src={`https://pollinations.ai/p/Warrior%20Portrait%20Elite%20Character%20Design%20Epic%20Lighting?width=400&height=400&seed=${i * 777}&nologo=true`} 
+                      src={`https://image.pollinations.ai/prompt/Warrior%20Portrait%20Elite%20Character%20Design%20Epic%20Lighting?width=400&height=400&seed=${i * 777}&nologo=true`} 
                       alt="Warrior" 
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
