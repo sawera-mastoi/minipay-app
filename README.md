@@ -1,48 +1,43 @@
-# 🌟 MiniPay Streak: Elevating Celo Engagement
+# 🌟 MiniPay Warrior: Forge Your On-Chain Identity on Celo
 
-[![Celo Mainnet](https://img.shields.io/badge/Network-Celo%20Mainnet-35D07F?style=for-the-badge&logo=celo)](https://celoscan.io/address/0xc8b20FD2C23f2Db1d7f27736B0E20bdaFbF2672c)
+[![Celo Mainnet](https://img.shields.io/badge/Network-Celo%20Mainnet-35D07F?style=for-the-badge&logo=celo)](https://celoscan.io/address/0x60f8833cd724979952a3FA66Abd867B7B603272E)
 [![Next.js](https://img.shields.io/badge/Built%20with-Next.js%2015-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![MiniPay](https://img.shields.io/badge/Platform-MiniPay-blueviolet?style=for-the-badge)](https://www.opera.com/products/minipay)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-> **Status**: 🚀 Active Development - Optimized for Celo Monthly Talent
+> **Status**: 🚀 Season 2 Active - Optimized for Celo Proof of Ship
 
-**MiniPay Streak** is a world-class decentralized application engineered for the **Celo ecosystem**. It transforms daily blockchain interaction into a premium, gamified experience, specifically optimized for the **MiniPay** mobile wallet. By leveraging Celo's revolutionary gas abstraction and high-performance infrastructure, we've created a seamless bridge between habit-building and Web3.
+**MiniPay Warrior** is a world-class decentralized application engineered for the **Celo ecosystem**. It transforms daily blockchain interaction into a premium, gamified experience. Beyond simple streak tracking, builders can now **forge their on-chain identity** by minting unique, AI-generated Warrior PFPs directly to the Celo Mainnet.
 
-## 🌍 Why Celo? (An Appreciation)
+## ⚔️ Forge Your Destiny
+MiniPay Warrior is more than a tool—it's a credential. By maintaining your daily streak and holding a Warrior PFP, you signal your active participation and reputation in the global Celo builder community.
 
-MiniPay Streak is built on Celo because we believe in their mission of **prosperity for everyone**. Celo provides the perfect foundation for our application through:
-
-- **Mobile-First DNA**: Celo's ultra-lightweight sync and phone number mapping (Social Connect) make it the only logical choice for MiniPay.
-- **Gas Abstraction**: The ability to pay for gas in stablecoins or have it abstracted away entirely allows us to reach the next billion users without the friction of "native tokens."
-- **Eco-Friendly**: As a carbon-negative blockchain, Celo aligns with our values of sustainable innovation.
-- **Fast & Reliable**: Sub-second block times ensure that "Checking In" is instantaneous and satisfying.
+### 🌟 Key Features
+- **AI PFP Summoning**: Use our integrated AI engine to generate unique Warrior portraits before minting.
+- **Daily Check-In Engine**: Build your on-chain reputation with daily interactions.
+- **Multi-Wallet Support**: Native integration for **MiniPay**, **MetaMask**, **OKX**, and **Bitget** via RainbowKit.
+- **Leaderboard Prestige**: Rank among the top builders and showcase your rarity.
+- **Premium UX/UI**: A state-of-the-art dark mode design featuring glassmorphism and fluid animations.
 
 ---
 
-## 🌟 Key Features
-
-- **Daily Check-In Engine**: Maintain your streak by interacting with our audited smart contract.
-- **Gas Abstraction**: Powered by Celo's native gas fee abstraction, ensuring users never worry about gas tokens.
-- **Real-time Leaderboard**: Compete with the global community and track top performers.
-- **Social Sharing**: Share your achievements directly to X (Twitter) or via native mobile sharing.
-- **Premium UX/UI**: Built with Framer Motion for smooth transitions and a glassmorphism design language.
-
 ## 🏗️ Technical Architecture
-
 Our architecture is built for **speed**, **security**, and **premium user experience**:
 
-- **Frontend**: [Next.js 15 (App Router)](https://nextjs.org/) with React 19, utilizing Server Components for lightning-fast initial loads and Client Components for interactive Web3 states.
-- **Smart Contracts**: Solidity 0.8.20 with optimized storage slots to minimize gas costs and rigorous state validation.
-- **Blockchain Interface**: [Ethers.js v6](https://docs.ethers.org/v6/) providing a robust, type-safe interface to the Celo Mainnet.
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) + [Framer Motion](https://www.framer.com/motion/) for a state-of-the-art Design System featuring glassmorphism and fluid animations.
-- **State Persistence**: Custom `useLocalStorage` hooks with cross-tab synchronization and error resilience.
+- **Frontend**: [Next.js 15](https://nextjs.org/) with React 19.
+- **Smart Contracts**: 
+    - `DailyStreak.sol`: Handles time-based activity tracking.
+    - `WarriorNFT.sol`: ERC721 contract with URI storage for unique PFPs (Deployed at `0x60f8...272E`).
+- **Web3 Stack**: [Wagmi](https://wagmi.sh/), [Viem](https://viem.sh/), and [RainbowKit](https://www.rainbowkit.com/) for a robust, modern connection layer.
+- **AI Integration**: Powered by Pollinations AI for dynamic, high-quality image generation.
+- **Styling**: Tailwind CSS 4 + Framer Motion for a premium "Game-Fi" feel.
 
 ### Contract Information
 - **Network**: Celo Mainnet
-- **Address**: `0xc8b20FD2C23f2Db1d7f27736B0E20bdaFbF2672c`
-- **ABI**: Found in `contracts/ABI.json`
+- **NFT Address**: `0x60f8833cd724979952a3FA66Abd867B7B603272E`
+- **Streak Address**: `0xc8b20FD2C23f2Db1d7f27736B0E20bdaFbF2672c`
+
+---
 
 ## 🚀 Getting Started
 
@@ -64,25 +59,16 @@ Our architecture is built for **speed**, **security**, and **premium user experi
    npm run dev
    ```
 
-## 📜 How it Works (Technical Deep-Dive)
-
-1. **Wallet Connection**: The app detects the `window.ethereum` provider, specifically checking for the `isMiniPay` flag to tailor the UI.
-2. **Streak Logic**: When a user clicks "Check In", a transaction is sent to the `DailyStreak` contract. The contract checks if 24 hours have passed since the last check-in but less than 48 hours (to maintain the streak).
-3. **Gas Abstraction**: For MiniPay users, the gas fees are abstracted at the wallet level, providing a "Zero Gas" feel.
-4. **State Management**: React hooks manage the local state, while `ethers.js` ensures real-time synchronization with onchain data.
-
 ---
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📜 How it Works
+1. **Wallet Connection**: RainbowKit detects your wallet and ensures you are on Celo Mainnet.
+2. **Summoning**: The "Mint" page allows you to generate AI portraits. Once you find your warrior, you can mint it for **5 CELO**.
+3. **Streaking**: Visit daily to "Check In" and build your streak count.
+4. **Reputation**: Your streak and NFT ownership are tracked on-chain, contributing to your global Proof of Ship ranking.
 
 ---
 
 <p align="center">
-  Built with 💛 by the <b>MiniPay Streak Team</b> for the <b>Celo Monthly Talent</b> event.
+  Built with 💛 for the <b>Celo Proof of Ship</b> program.
 </p>
