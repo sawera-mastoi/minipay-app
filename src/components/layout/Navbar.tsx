@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from './Container';
-import { Zap, Wallet, Sparkles } from 'lucide-react';
+import { Zap, Sparkles, Package } from 'lucide-react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 /**
  * The primary navigation component for the MiniPay Warrior application.
- * Features a glassmorphism design, brand logo, and RainbowKit wallet connection.
+ * Features a glassmorphism design, brand logo, PFP avatar, and RainbowKit wallet connection.
  */
 export const Navbar = () => {
   const pathname = usePathname();
+  const [pfpImage, setPfpImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('pfpImage');
+    if (stored) setPfpImage(stored);
+
+    // Listen for storage changes from other components
+    const handleStorage = () => {
+      const updated = localStorage.getItem('pfpImage');
+      setPfpImage(updated);
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
   
   return (
     <nav className='fixed top-0 w-full z-50 border-b border-white/5 bg-neutral-950/50 backdrop-blur-xl'>
@@ -37,7 +51,26 @@ export const Navbar = () => {
               <Sparkles className="w-4 h-4" />
               Mint PFP
             </Link>
+            <Link 
+              href="/inventory" 
+              className={`flex items-center gap-1.5 transition-colors ${pathname === '/inventory' ? 'text-yellow-500' : 'text-neutral-400 hover:text-white'}`}
+            >
+              <Package className="w-4 h-4" />
+              Inventory
+            </Link>
           </div>
+
+          {/* PFP Avatar */}
+          {pfpImage && (
+            <Link href="/inventory" className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-400 to-amber-600 rounded-full opacity-60 group-hover:opacity-100 transition-opacity blur-[2px]" />
+              <img 
+                src={pfpImage} 
+                alt="Your PFP" 
+                className="relative w-9 h-9 rounded-full object-cover border border-yellow-500/50"
+              />
+            </Link>
+          )}
           
           <ConnectButton 
             accountStatus="avatar"

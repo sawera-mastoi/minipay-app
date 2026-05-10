@@ -8,31 +8,52 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 /**
  * @title WarriorNFT
  * @author MiniPay Team
- * @notice An NFT contract for Warrior PFPs on Celo Mainnet.
+ * @notice An NFT contract for Warrior PFPs on Celo Mainnet with tiered pricing.
  */
 contract WarriorNFT is ERC721, ERC721URIStorage, Ownable {
     uint256 private _nextTokenId;
-    uint256 public constant MINT_PRICE = 5 ether; // 5 CELO
 
-    event WarriorMinted(address indexed owner, uint256 tokenId, string tokenURI);
+    enum Tier { Bronze, Silver, Gold, Diamond, Mythic }
+
+    mapping(Tier => uint256) public tierPrice;
+    mapping(uint256 => Tier) public tokenTier;
+
+    event WarriorMinted(address indexed owner, uint256 tokenId, string tokenURI, Tier tier);
 
     constructor(address initialOwner) 
         ERC721("Celo Warrior PFP", "CWP") 
         Ownable(initialOwner)
-    {}
+    {
+        tierPrice[Tier.Bronze]  = 0.5 ether;  // 0.5 CELO
+        tierPrice[Tier.Silver]  = 2 ether;     // 2 CELO
+        tierPrice[Tier.Gold]    = 5 ether;     // 5 CELO
+        tierPrice[Tier.Diamond] = 10 ether;    // 10 CELO
+        tierPrice[Tier.Mythic]  = 50 ether;    // 50 CELO
+    }
 
     /**
-     * @notice Mints a new Warrior PFP NFT.
+     * @notice Mints a new Warrior PFP NFT at the specified tier.
      * @param uri The metadata URI (e.g., Pollinations AI image link).
+     * @param tier The pricing tier (0=Bronze, 1=Silver, 2=Gold, 3=Diamond, 4=Mythic).
      */
-    function mintWarrior(string memory uri) public payable {
-        require(msg.value >= MINT_PRICE, "Insufficient CELO to mint");
+    function mintWarrior(string memory uri, uint8 tier) public payable {
+        require(tier <= uint8(Tier.Mythic), "Invalid tier");
+        Tier selectedTier = Tier(tier);
+        require(msg.value >= tierPrice[selectedTier], "Insufficient CELO for this tier");
         
         uint256 tokenId = _nextTokenId++;
         _safeMint(msg.sender, tokenId);
         _setTokenURI(tokenId, uri);
+        tokenTier[tokenId] = selectedTier;
 
-        emit WarriorMinted(msg.sender, tokenId, uri);
+        emit WarriorMinted(msg.sender, tokenId, uri, selectedTier);
+    }
+
+    /**
+     * @notice Returns the tier of a given token.
+     */
+    function getTokenTier(uint256 tokenId) public view returns (Tier) {
+        return tokenTier[tokenId];
     }
 
     /**
