@@ -222,7 +222,8 @@ export default function Home() {
         </Container>
       </Section>
 
-        <Container className="mt-20">
+      <Section className="py-20">
+        <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FadeIn delay={0.3}>
               <StreakHistory />
