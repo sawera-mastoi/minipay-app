@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts@4.9.6/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts@4.9.6/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts@4.9.6/access/Ownable.sol";
 
 /**
  * @title WarriorNFT
@@ -20,9 +20,8 @@ contract WarriorNFT is ERC721, ERC721URIStorage, Ownable {
 
     event WarriorMinted(address indexed owner, uint256 tokenId, string tokenURI, Tier tier);
 
-    constructor(address initialOwner) 
+    constructor() 
         ERC721("Celo Warrior PFP", "CWP") 
-        Ownable(initialOwner)
     {
         tierPrice[Tier.Bronze]  = 0.5 ether;  // 0.5 CELO
         tierPrice[Tier.Silver]  = 2 ether;     // 2 CELO
@@ -61,7 +60,8 @@ contract WarriorNFT is ERC721, ERC721URIStorage, Ownable {
      */
     function withdraw() public onlyOwner {
         uint256 balance = address(this).balance;
-        payable(owner()).transfer(balance);
+        (bool success, ) = payable(owner()).call{value: balance}("");
+        require(success, "Withdraw failed");
     }
 
     // The following functions are overrides required by Solidity.
@@ -73,6 +73,10 @@ contract WarriorNFT is ERC721, ERC721URIStorage, Ownable {
         returns (string memory)
     {
         return super.tokenURI(tokenId);
+    }
+
+    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+        super._burn(tokenId);
     }
 
     function supportsInterface(bytes4 interfaceId)
