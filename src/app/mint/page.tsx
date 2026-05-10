@@ -13,7 +13,7 @@ import { useConfetti } from '../../hooks/useConfetti';
 
 // WarriorNFT contract details (to be deployed or using a placeholder)
 const WARRIOR_NFT_ADDRESS = '0x60f8833cd724979952a3FA66Abd867B7B603272E';
-import WarriorABI from '../../../contracts/WarriorNFT.json'; // I'll need to generate this JSON
+import WarriorABI from '../../contracts/WarriorNFT.json'; // I'll need to generate this JSON
 
 export default function MintPage() {
   const { address, isConnected } = useAccount();
