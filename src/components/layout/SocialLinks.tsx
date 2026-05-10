@@ -1,11 +1,11 @@
 import React from 'react';
-import { Github, Twitter, MessageCircle } from 'lucide-react';
+import { Terminal, X, MessageCircle } from 'lucide-react';
 
 export const SocialLinks = () => (
   <div className='flex gap-4'>
     {[
-      { icon: <Github className='w-5 h-5' />, href: '#', label: 'GitHub' },
-      { icon: <Twitter className='w-5 h-5' />, href: '#', label: 'Twitter' },
+      { icon: <Terminal className='w-5 h-5' />, href: '#', label: 'GitHub' },
+      { icon: <X className='w-5 h-5' />, href: '#', label: 'Twitter' },
       { icon: <MessageCircle className='w-5 h-5' />, href: 'https://t.me/proofofship', label: 'Telegram' },
     ].map((social, idx) => (
       <a 

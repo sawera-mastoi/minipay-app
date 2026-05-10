@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Navbar, Footer, Section, Container } from '../../components/layout';
 import { Card, Glow, FadeIn, Badge } from '../../components/ui';
 import { Button } from '../../components/ui/Button';
-import { Wand2, Shield, Zap, Sparkles, Image as ImageIcon } from 'lucide-react';
+import { Wand, Shield, Zap, Sparkles, Image as ImageIcon } from 'lucide-react';
 import { useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import { parseEther } from 'viem';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -152,7 +152,7 @@ export default function MintPage() {
                       size="lg" 
                       onClick={generateWarrior} 
                       isLoading={isGenerating}
-                      leftIcon={<Wand2 className="w-6 h-6" />}
+                      leftIcon={<Wand className="w-6 h-6" />}
                       className="px-12 py-8 text-xl font-black rounded-3xl shadow-[0_0_20px_rgba(251,191,36,0.3)] hover:shadow-[0_0_30px_rgba(251,191,36,0.5)] transition-all"
                     >
                       {generatedImage ? 'Re-Summon' : 'Summon Warrior'}
@@ -200,7 +200,7 @@ export default function MintPage() {
                       <div className="flex flex-col items-center gap-6">
                         <div className="relative">
                           <div className="w-24 h-24 border-4 border-yellow-500/10 border-t-yellow-500 rounded-full animate-spin" />
-                          <Wand2 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-yellow-500 animate-pulse" />
+                          <Wand className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-yellow-500 animate-pulse" />
                         </div>
                         <div className="text-yellow-500 font-black uppercase tracking-[0.3em] text-sm animate-pulse">Summoning...</div>
                       </div>

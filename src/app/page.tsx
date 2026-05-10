@@ -3,8 +3,13 @@
 import { useEffect, useState } from "react";
 import { useAccount, useReadContract, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { CONTRACT_ADDRESS } from "../utils/constants";
-import ABI from "../../contracts/ABI.json";
-import { Share2, ArrowRight, Sparkles } from "lucide-react";
+import ABI from "../../../contracts/ABI.json";
+import { 
+  Zap, 
+  Share2, 
+  ArrowRight, 
+  Sparkles 
+} from "lucide-react";
 import { shareStreakNative } from "../utils/share";
 import { Button } from "../components/ui/Button";
 import Link from 'next/link';
