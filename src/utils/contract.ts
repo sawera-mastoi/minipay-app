@@ -1,6 +1,6 @@
 import { BrowserProvider, Contract, type Eip1193Provider } from 'ethers';
 import { CONTRACT_ADDRESS } from './constants';
-import ABI from '../../contracts/ABI.json';
+import ABI from '../contracts/ABI.json';
 
 /**
  * Returns a typed instance of the DailyStreak smart contract.
