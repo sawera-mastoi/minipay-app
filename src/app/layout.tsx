@@ -1,30 +1,31 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Providers } from '../components/Providers';
 
 export const metadata: Metadata = {
   title: {
-    default: 'MiniPay Streak | Celo Daily Check-In',
-    template: '%s | MiniPay Streak',
+    default: 'MiniPay Warrior | Celo NFT PFP',
+    template: '%s | MiniPay Warrior',
   },
-  description: 'Maintain your daily check-in streak on the Celo blockchain. Optimized for MiniPay with zero gas fees and a seamless mobile experience.',
-  keywords: ['Celo', 'MiniPay', 'Blockchain', 'DApp', 'Streak', 'Crypto', 'Web3', 'Daily Check-in'],
-  authors: [{ name: 'MiniPay Streak Team' }],
+  description: 'Mint your unique AI-generated Warrior PFP on the Celo blockchain. Join the elite community of Celo builders.',
+  keywords: ['Celo', 'MiniPay', 'NFT', 'PFP', 'AI Generation', 'Blockchain', 'DApp', 'Warrior'],
+  authors: [{ name: 'MiniPay Warrior Team' }],
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: 'MiniPay Streak | Celo Daily Check-In',
-    description: 'Build and maintain your daily check-in streak on Celo. Zero fees, maximum rewards.',
+    title: 'MiniPay Warrior | Celo NFT PFP',
+    description: 'Mint your unique AI-generated Warrior PFP on Celo. 5 CELO for a lifetime of prestige.',
     type: 'website',
-    url: 'https://minipay-streak.vercel.app',
-    siteName: 'MiniPay Streak',
+    url: 'https://minipay-warrior.vercel.app',
+    siteName: 'MiniPay Warrior',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MiniPay Streak | Celo Daily Check-In',
-    description: 'Build your daily streak on Celo with MiniPay. Zero gas fees, seamless experience.',
+    title: 'MiniPay Warrior | Celo NFT PFP',
+    description: 'Mint your unique AI-generated Warrior PFP on Celo. 5 CELO for a lifetime of prestige.',
     creator: '@minipay',
   },
 };
@@ -36,7 +37,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className='antialiased bg-neutral-950'>{children}</body>
+      <body className='antialiased bg-neutral-950'>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
+
