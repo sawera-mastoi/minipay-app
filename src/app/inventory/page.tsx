@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Navbar, Footer, Section, Container } from '../../components/layout';
-import { Card, FadeIn, Badge } from '../../components/ui';
+import { Card, FadeIn } from '../../components/ui';
 import { Button } from '../../components/ui/Button';
 import { Package, User, Check, Sparkles, Image as ImageIcon, Trash2 } from 'lucide-react';
 import { useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useToast } from '../../hooks/useToast';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface MintedWarrior {
   image: string;
@@ -37,6 +38,7 @@ export default function InventoryPage() {
   useEffect(() => {
     const stored = localStorage.getItem('mintedWarriors');
     if (stored) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setWarriors(JSON.parse(stored));
     }
     const pfp = localStorage.getItem('selectedPFP');
@@ -136,9 +138,12 @@ export default function InventoryPage() {
                     <div className="flex items-center gap-6">
                       <div className="relative">
                         <div className="absolute -inset-1 bg-gradient-to-tr from-yellow-400 to-amber-600 rounded-full blur-sm opacity-60" />
-                        <img 
+                        <Image 
                           src={currentPFP.image} 
                           alt="Current PFP" 
+                          width={80}
+                          height={80}
+                          unoptimized
                           className="relative w-20 h-20 rounded-full object-cover border-2 border-yellow-500"
                         />
                       </div>
@@ -171,9 +176,12 @@ export default function InventoryPage() {
                       >
                         {/* Image */}
                         <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
-                          <img 
+                          <Image 
                             src={warrior.image} 
                             alt={warrior.name} 
+                            width={400}
+                            height={400}
+                            unoptimized
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                           {isActivePFP && (

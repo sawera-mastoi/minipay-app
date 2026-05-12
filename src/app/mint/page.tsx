@@ -11,6 +11,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useToast } from '../../hooks/useToast';
 import { useConfetti } from '../../hooks/useConfetti';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const WARRIOR_NFT_ADDRESS = '0x60f8833cd724979952a3FA66Abd867B7B603272E';
 
@@ -84,7 +85,7 @@ const TIERS = [
 ];
 
 export default function MintPage() {
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
   const [selectedTier, setSelectedTier] = useState(2); // Default to Gold
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
@@ -142,8 +143,8 @@ export default function MintPage() {
         args: [generatedImage, selectedTier],
         value: parseEther(tier.price),
       });
-    } catch (err: any) {
-      showToast(err.message || 'Minting failed', 'error');
+    } catch (err) {
+      showToast(err instanceof Error ? err.message : 'Minting failed', 'error');
     }
   };
 
@@ -164,6 +165,7 @@ export default function MintPage() {
       });
       localStorage.setItem('mintedWarriors', JSON.stringify(minted));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess]);
 
   return (
@@ -342,9 +344,12 @@ export default function MintPage() {
                 
                 {generatedImage ? (
                   <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-inner">
-                    <img 
+                    <Image 
                       src={generatedImage} 
                       alt="Generated Warrior" 
+                      width={512}
+                      height={512}
+                      unoptimized
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-8 space-y-2">

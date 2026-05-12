@@ -13,6 +13,7 @@ import {
 import { shareStreakNative } from "../utils/share";
 import { Button } from "../components/ui/Button";
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Import modular components
 import { Navbar, Footer, Section, Container, FAQSection, Newsletter } from '../components/layout';
@@ -24,7 +25,7 @@ import { useToast } from '../hooks/useToast';
 import { useConfetti } from '../hooks/useConfetti';
 
 export default function Home() {
-  const { address, isConnected } = useAccount();
+  const { address } = useAccount();
   const [isMiniPay, setIsMiniPay] = useState(false);
   const [streak, setStreak] = useState(0);
 
@@ -47,8 +48,9 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const eth = (window as any).ethereum;
+      const eth = (window as unknown as { ethereum?: { isMiniPay?: boolean } }).ethereum;
       if (eth?.isMiniPay) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsMiniPay(true);
       }
     }
@@ -56,12 +58,14 @@ export default function Home() {
 
   useEffect(() => {
     if (currentStreak !== undefined) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStreak(Number(currentStreak));
     }
   }, [currentStreak]);
 
   useEffect(() => {
     if (isSuccess) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStreak((prev) => prev + 1);
       fireConfetti();
       showToast('Successfully checked in!');
@@ -76,8 +80,8 @@ export default function Home() {
         abi: ABI,
         functionName: 'performCheckIn',
       });
-    } catch (err: any) {
-      showToast(err.message || "Transaction failed", 'error');
+    } catch (err) {
+      showToast(err instanceof Error ? err.message : "Transaction failed", 'error');
     }
   };
 
@@ -140,7 +144,7 @@ export default function Home() {
               
               <div className="space-y-3">
                 <h2 className="text-4xl font-black tracking-tight">Daily Streak</h2>
-                <p className="text-neutral-400 text-base font-medium">Don't break the chain. Stay active.</p>
+                <p className="text-neutral-400 text-base font-medium">Don&apos;t break the chain. Stay active.</p>
               </div>
 
               {isMiniPay && (
@@ -205,9 +209,12 @@ export default function Home() {
               <FadeIn key={i} delay={i * 0.1}>
                 <Card variant="glass" className="p-3 border-white/5 group hover:border-yellow-500/30 transition-all duration-500 rounded-3xl overflow-hidden">
                   <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
-                    <img 
+                    <Image 
                       src={`https://image.pollinations.ai/prompt/Warrior%20Portrait%20Elite%20Character%20Design%20Epic%20Lighting?width=400&height=400&seed=${i * 777}&nologo=true`} 
                       alt="Warrior" 
+                      width={400}
+                      height={400}
+                      unoptimized
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
